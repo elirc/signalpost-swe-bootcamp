@@ -1,5 +1,7 @@
 # Signalpost — grow as an engineer
 
+Private source repository: [elirc/signalpost-swe-bootcamp](https://github.com/elirc/signalpost-swe-bootcamp). The default branch is `main`; create a review branch for future changes.
+
 This workspace is now focused on your learning: fundamentals, independent feature delivery and senior responsibilities. Start with [your first 75 minutes](docs/curriculum/FIRST_SESSION.md) and [the learning path](docs/curriculum/START_HERE.md). Read [the curriculum review](docs/curriculum/REVIEW.md) for what changed and why.
 
 The active course has 12 modules and 48 practice tasks. Each module includes instruction, a worked example, guided steps, independent tasks, feedback, delayed transfer and remediation. The first three labs are intentionally unfinished or defective so the learner can do the work. All personal skills remain unassessed.

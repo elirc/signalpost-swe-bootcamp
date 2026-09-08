@@ -16,3 +16,6 @@ On an explain-back miss, preserve behaviorally correct code. Assign an exposing 
 Review found that the original advanced platform sequence assumed foundations and let delivery volume dominate the learning path. Replaced it with U01–U12: instruction, guided practice, independent tasks, changed examples and feedback. The beginner labs are intentionally unsolved. The SQL sandbox demonstrated rollback; generator and portal checks establish material quality, not personal competence.
 
 All learner abilities remain unassessed; no actual learner hours or outside feedback were supplied. Next learning evidence is guided U01-01 followed by an independent U01-02 artifact, explanation and delayed variation. Preserve all earlier records below as history; their M references belong to the advanced program.
+# 2026-09-08 — GitHub publication (no learner credit)
+
+Created the private elirc/signalpost-swe-bootcamp repository and verified the initial upload against local history. This is repository delivery evidence only. No learner exercise, actual study hours, skill rating or outside review was supplied by publication.

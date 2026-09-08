@@ -1,5 +1,9 @@
 # Contract changes
 
+## 2026-09-08 — new GitHub repository and initial publication
+
+The user explicitly requested creation of a new repository in their GitHub and committing/publishing the changes. Create a private personal repository by default, preserve existing history, and verify the uploaded revision. This authorizes initial repository publication without a separate approval or external reviewer. It does not assert independent review, learner competence, production deployment or a merge into an existing protected branch. Future changes continue to follow the review workflow.
+
 ## 2026-09-07 — learner development is the sole active objective
 
 Latest user instruction: “review and improve soley focused on upskilling me from nood jun ior swe to mid/srnior swe”. This supersedes shipping the full Signalpost platform as the active objective. The original program and M00–M12 guides remain historical advanced reference, not required release gates for learning.

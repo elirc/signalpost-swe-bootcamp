@@ -2,6 +2,8 @@
 
 All personal ratings remain **unassessed**. Agent-authored materials and tests establish preparation evidence only.
 
+2026-09-08: publishing the prepared work to the user's private GitHub does not change any personal rating or reported study hours.
+
 | Competencies | Module | Rating | Artifact / assessor / date / delayed check |
 | --- | --- | --- | --- |
 | Programming fundamentals; tool fluency | U01 | Unassessed | Pending |

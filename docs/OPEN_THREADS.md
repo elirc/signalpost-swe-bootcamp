@@ -2,6 +2,8 @@
 
 The latest user instruction makes personal skill development the sole active objective. The course is prepared; personal learning remains unassessed.
 
+2026-09-08 publication update: the new private repository is [elirc/signalpost-swe-bootcamp](https://github.com/elirc/signalpost-swe-bootcamp), with main tracking origin/main. The original repository-destination blocker below is historical and resolved for source hosting. No public site or independent review has been created. GitHub Actions was queued on the initial upload; inspect its actual conclusion before claiming remote CI success.
+
 1. Complete guided U01-01 and an independent U01-02 attempt; supply actual artifact, output and help used.
 2. Establish prerequisite behavior with challenge-out only where evidence supports it; schedule delayed changed examples.
 3. Review learner features at U07 and the second-domain capstone at U12. AI feedback remains provisional.
