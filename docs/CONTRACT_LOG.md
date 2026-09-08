@@ -1,5 +1,13 @@
 # Contract changes
 
+## 2026-09-07 — learner development is the sole active objective
+
+Latest user instruction: “review and improve soley focused on upskilling me from nood jun ior swe to mid/srnior swe”. This supersedes shipping the full Signalpost platform as the active objective. The original program and M00–M12 guides remain historical advanced reference, not required release gates for learning.
+
+Use beginner-safe defaults with an evidence-based option to skip mastered material. Teach one primary language before additional runtimes. Sequence worked instruction, guided practice, independent work and changed-example checks. Keep at least 30% planned independent task time, but replace the fixed 70/30 work/drill split and per-ticket ceremony with stage-appropriate practice and short records. Require substantial independent practice after instruction; do not begin novice learning with a high-stakes cold assessment. External review is useful at portfolio gates, not a blocker on each small learning exercise. Job titles require contextual human judgment and sustained work beyond this course.
+
+Autonomous work prepares materials and the portal only. Learner practice, explain-backs, reviews and real responsibility remain unassessed until observed. No questions or routine approval requested; no paid resources or new platform infrastructure required for the starting exercises.
+
 ## 2026-09-07 — autonomous delivery and self-paced study
 
 User instruction: "complete entire process and learning / upskilling bootcamp. do not ask questions, use best judgement".

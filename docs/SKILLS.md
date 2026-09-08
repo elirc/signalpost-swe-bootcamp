@@ -1,19 +1,24 @@
-# Skills evidence ledger
+# Personal skills evidence ledger
 
-All ratings are **unassessed**. There is no evidence of the learner's independent work in this session.
+All personal ratings remain **unassessed**. Agent-authored materials and tests establish preparation evidence only.
 
-| Level | Required evidence |
-| --- | --- |
-| 1 | Follows a worked example and explains the immediate steps |
-| 2 | Completes a bounded task with guidance |
-| 3 | Independently completes and verifies a bounded task |
-| 4 | Handles an unfamiliar variation and defends tradeoffs |
-| 5 | Teaches the skill and explains when it is the wrong tool |
+| Competencies | Module | Rating | Artifact / assessor / date / delayed check |
+| --- | --- | --- | --- |
+| Programming fundamentals; tool fluency | U01 | Unassessed | Pending |
+| Systematic debugging; problem decomposition | U02 | Unassessed | Pending |
+| Typed domain modeling; behavioral testing | U03 | Unassessed | Pending |
+| HTTP API design; boundary validation | U04 | Unassessed | Pending |
+| Relational data modeling; transactional reasoning | U05 | Unassessed | Pending |
+| Frontend state modeling; accessible interaction | U06 | Unassessed | Pending |
+| Feature ownership; authorization design | U07 | Unassessed | Pending |
+| Maintainability/review; collaborative delivery | U08 | Unassessed | Pending |
+| Algorithmic reasoning; performance investigation | U09 | Unassessed | Pending |
+| Failure-aware design; operational diagnosis | U10 | Unassessed | Pending |
+| System design judgment; risk/scope management | U11 | Unassessed | Pending |
+| Sustained ownership; communication/mentoring | U12 | Unassessed | Pending |
 
-Record competency, rating, observed behavior, artifact/commit, assistance, assessor, date and retest date. Re-test skills not exercised for 3+ weeks. AI assessments are provisional; passing CI is delivery evidence only.
+Ratings: 1 follows/explains an example; 2 completes with guidance; 3 independently completes/verifies/explains a bounded task; 4 handles unfamiliar variation and tradeoffs; 5 teaches and identifies limits. See [assessment](curriculum/ASSESSMENT.md). Record both competencies separately if their evidence differs.
 
-Competencies tracked: delivery pipeline; testing setup; data modeling; storage design; authz modeling; tenancy; backpressure; reliability under load; state machines; exactly-once effects; cross-service contracts; scheduling logic; notification reliability; throughput engineering; query planning; observability; operational design; frontend performance; a11y; API design; config-as-code; security engineering; system design; operational ownership; communication; agent decomposition, context preparation, supervision and integration.
+Evidence fields: behavior, learner artifact/revision, actual verification, assistance, assessor, date and delayed changed-task result. AI assessment is provisional; never impersonate a human reviewer. Do not infer mid/senior title from a numeric score.
 
-No hiring-level judgment is supported yet.
-
-Session close, 2026-09-07: implementation verification is recorded in run 0001. No learner-produced transfer evidence was supplied, so all personal ratings remain unassessed. In particular, agent-discovered timestamp precision, duplicate-override and contrast defects confer no learner credit.
+The earlier M00–M12 competence list belongs to the optional advanced platform path. No ratings or original evidence were transferred to new U identifiers. There were zero reported learner hours at revision 0ca3e44, and none have been supplied during the curriculum review.

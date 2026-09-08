@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Signalpost · Engineering fieldwork",
+  title: "Signalpost · Grow as an engineer",
   description:
-    "A self-paced engineering bootcamp built around an observability platform. Evidence before confidence.",
+    "Build independent engineering skill through fundamentals, guided practice, complete features and senior responsibilities.",
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

@@ -1,21 +1,27 @@
-# Signalpost
+# Signalpost — grow as an engineer
 
-An observability platform under development, paired with a complete self-paced engineering curriculum. The current local release includes a Next.js learning workspace, bounded OTLP/HTTP JSON ingestion, PostgreSQL storage and tenant-scoped queries, and a .NET 10 Sentinel foundation.
+This workspace is now focused on your learning: fundamentals, independent feature delivery and senior responsibilities. Start with [your first 75 minutes](docs/curriculum/FIRST_SESSION.md) and [the learning path](docs/curriculum/START_HERE.md). Read [the curriculum review](docs/curriculum/REVIEW.md) for what changed and why.
 
-**This is not a completed production platform or a completed personal assessment.** Implementation coverage and all outstanding acceptance gates are in [OPEN_THREADS](docs/OPEN_THREADS.md). Every learner skill is unassessed. No public deployment, independent review, full-rate benchmark or real-user operation has occurred.
+The active course has 12 modules and 48 practice tasks. Each module includes instruction, a worked example, guided steps, independent tasks, feedback, delayed transfer and remediation. The first three labs are intentionally unfinished or defective so the learner can do the work. All personal skills remain unassessed.
 
-## Start the learning workspace
+## Start learning locally
 
-Requirements: Node 24 and npm. In PowerShell use `npm.cmd` if execution policy blocks `npm.ps1`.
+On this prepared machine, use the existing Node 24 and dependencies. The first two labs need no package installation, database or cloud setup.
 
-```sh
-npm ci
-npm run dev
+```powershell
+node --version
+node --test practice/checks/u01.test.mjs
 ```
 
-Open http://127.0.0.1:3000. The portal contains all 13 milestones and 52 tickets, an evidence journal with JSON export, and a clearly labeled synthetic telemetry lab. Journal entries stay in browser storage and never automatically award a skill rating. Back them up with Export evidence.
+The initial U01 run fails because its functions are unfinished; [FIRST_SESSION](docs/curriculum/FIRST_SESSION.md) explains the next step. Do not change the supplied expectations or count prepared software as your own work.
 
-For the text-only program, begin with [START_HERE](docs/curriculum/START_HERE.md). The [original program](docs/curriculum/ORIGINAL_PROGRAM.md) is preserved with the [autonomous-work amendment](docs/CONTRACT_LOG.md). The authored program and original requirements govern the remaining work.
+For the portal, `npm.cmd run dev` serves http://127.0.0.1:3000. The managed production preview, when running, is http://127.0.0.1:3427. A fresh checkout needs `npm.cmd ci` first. The portal shows lessons, downloadable guides and a journal; records stay in this browser, so export backups. Journal entries never award competence automatically. Old M identifiers retain their original meaning.
+
+The [assessment](docs/curriculum/ASSESSMENT.md), [tutor instructions](docs/curriculum/MENTOR.md), [project setup](docs/curriculum/PROJECTS.md) and [portfolio](docs/curriculum/PORTFOLIO.md) define the process. `python scripts/write-curriculum.py` regenerates active guides/JSON and browser downloads without touching learner files. `npm.cmd run curriculum:check` validates the authored path.
+
+## Optional advanced platform reference
+
+The previous Signalpost backend remains available for later code reading and advanced exercises. Its unfinished release requirements are deferred, not learning prerequisites. Original M00–M12 materials and [original program](docs/curriculum/ORIGINAL_PROGRAM.md) are preserved under the [scope amendment](docs/CONTRACT_LOG.md). Start with U01 instead of these service commands.
 
 ## Run the data services locally
 
@@ -27,7 +33,7 @@ docker compose up -d
 
 Copy `.env.example` to `.env`, then set its connection strings. Run `npm run migrate` using the migration administrator. Apply `db/roles.sql` once using that administrator (for example `docker compose exec -T postgres psql -U signalpost -d signalpost`, supplying the file via your shell). Run `npm run bootstrap` to create a synthetic organization/project and one ingest plus one read credential. Store newly generated tokens locally, never in Git.
 
-Start `npm run ingest` with INGEST_DATABASE_URL and REDIS_URL set. Set SIGNALPOST_INGEST_TOKEN and run `npm run demo`. Configure QUERY_DATABASE_URL on the Next process and use the read token in the Telemetry lab to query the last 24 hours. Tokens entered there remain in memory.
+Start `npm run ingest` with INGEST_DATABASE_URL and REDIS_URL set. Set SIGNALPOST_INGEST_TOKEN and run `npm run demo`. Configure QUERY_DATABASE_URL on the Next process and use the read token in the Advanced reference to query the last 24 hours. Tokens entered there remain in memory.
 
 Sentinel uses SENTINEL_DATABASE_URL in Npgsql format (`Host=127.0.0.1;Database=signalpost;Username=signalpost_sentinel;Password=...`) and REDIS_CONNECTION (`127.0.0.1:6379`). Set these in the shell environment; .NET does not load the root `.env` automatically. Run:
 
@@ -59,7 +65,7 @@ The normal TypeScript suite uses PGlite to execute actual PostgreSQL semantics l
 | packages/core | Validated query compiler, supported OTLP decoder, auth and database access |
 | db | Relational/Timescale migrations and restricted service roles |
 | tests | Invariant, protocol, .NET, browser and container verification |
-| docs/curriculum | 13 milestone guides, 52 tickets, rubrics, drills and agent exercises |
+| docs/curriculum | 12 active learning modules, 48 tasks, labs and assessment; original advanced guides archived |
 | docs/adr | Decisions and their costs, assumptions and pending evidence |
 
 ## Boundaries that matter

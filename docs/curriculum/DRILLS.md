@@ -1,24 +1,18 @@
-# Drill bank and safe execution
+# Practice that supports the current skill
 
-Before a planted-defect/bad-requirement exercise, the examiner verifies a disposable Git worktree, synthetic database, separate credentials, disabled deployment and disabled real notification channels. The learner knows defects exist but not where. The answer key is git-ignored and accessible only by agreement; private-branch archival happens after scoring. An answer key is not prepared in the normal learner workspace.
+Use short drills inside the learning sessions, not a second curriculum competing for time.
 
-## Weekly mandatory drills
+| Stage | Suitable drill | Evidence |
+| --- | --- | --- |
+| U01–U03 | Trace five values; predict an output; find one boundary defect; write one assertion | Actual output, explanation and changed example |
+| U04–U06 | Trace one HTTP request; repair a failed save; join three rows; use a form by keyboard | Reproduction and regression |
+| U07–U09 | Review a small diff; resolve a conflict; test a permission bypass; compare two algorithms | Scenario, consequence and observed verification |
+| U10–U12 | Tabletop partial failure; bounded local recovery; challenge one design assumption; teach a concept | Decision, limits, review and follow-up |
 
-- No-AI hour: one bounded ticket, documentation and terminal. Record assistance honestly.
-- Independent planted-defect review: findings/misses/false positives, with the pattern behind each miss.
+Once each week, revisit an earlier concept without the old solution. Mix at most one older skill into current practice; avoid introducing several new tools at once. Choose the next drill from an actual mistake, not a rotating checklist. The authored module provides a specific debugging scenario and remediation.
 
-## Rotating drills
+Beginner sessions use the 10–20 minute hint ladder. Later investigations can timebox 30–45 minutes before writing attempts and asking for a narrower hint. Assistance is recorded; independence is reassessed on a changed problem.
 
-1. Chaos: lose leadership mid-evaluation; fill ingest capacity with slow Postgres; send future timestamps; make a provider return success without delivery; delay aggregates. Use `git bisect` at least monthly.
-2. Interview: 45 minutes, alternate TypeScript and .NET framing; scores provisional and evidence-linked.
-3. Code reading: study SigNoz ingestion/query builder, Loki label indexing, Vector acknowledgement/backpressure or Prometheus alerting. Write one page of mechanics, tradeoffs and a justified change; never copy implementations.
-4. Bad requirements: drop accepted logs on overload; evaluate on every incoming sample; allow raw SQL; acknowledge failed delivery; trust org IDs in key names. A well-built violation fails the exercise.
-5. Agent exercise: use AGENT_ENGINEERING.md every two weeks.
+The supplied U02 starter is the only pre-planted defect set in the beginner materials and is explicitly labeled. All additional injected defects must use disposable copies/worktrees, synthetic input, isolated local data, and disabled deployment/notification paths. Never modify the learner's ongoing project silently.
 
-## Preferred planted defects
-
-Ack before durable commit; ignore `for`; compute on-call in server-local time; rate-limit by org instead of key; interpolate label values into SQL; delete by received time while queries use event time; leader lock without expiry.
-
-## Per milestone
-
-Three-role design defense (staff engineer, security engineer, SRE); independent incident drill with alert/graph/logs and a harder-reviewed postmortem; archaeology in an unfamiliar 600-line module; conflicting-branch Git integration. Prepare drill artifacts in the sandbox at the appropriate time, not by placing hidden defects in accepted production code.
+Interview-style algorithms become useful alongside U09 data structures. Practice explaining assumptions and costs; do not replace feature work with puzzle volume. Real incident, mentoring and collaboration evidence requires actual participation and cannot be synthesized by running drills.

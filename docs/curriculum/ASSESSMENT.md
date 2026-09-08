@@ -1,29 +1,54 @@
-# Assessment instruments
+# Assess behavior, not course completion
 
-## Calibration without a live interview
+No baseline, personal rating or job level is inferred from agent-written code. Use these instruments on learner-produced artifacts. The numbers below are program defaults, not a validated hiring examination.
 
-Submit four artifacts: a request-path explanation from unfamiliar code; a reproduced persistence/concurrency defect with a prediction and counterexample; a delegation brief with explicit scope/cancellation/verification; a short feature history separating personal and agent contributions. Add sustainable hours, strengths and gaps with evidence. The mentor's assessment remains provisional until independent behavior is observed.
+## Starting point and challenge-out
 
-## Plan rubric (0–2 each)
+Default to U01. Optional 30–45 minute baseline: write a small list transformation, reproduce one failing assertion, explain a function's input/output and inspect your Git diff. If any concept is unfamiliar, stop the baseline and learn it; this is placement, not failure.
 
-Score scope, dependency reasoning, data/invariant impact, failure hypotheses and discriminating verification. Zero: absent or generic. One: relevant but incomplete. Two: concrete and falsifiable. A high total does not compensate for an ignored protected invariant. Return the smallest revision needed before code.
+To skip a familiar module, submit its independent task or an equivalent prior artifact you authored, explain it with code closed, and complete a changed example with no AI. Record assistance, date and checks. A tutor may give provisional feedback; the challenge-out is confirmed only after a delayed changed attempt. Do not skip because a technology appears on a résumé. U01–U06 require prerequisite behavior, U07–U09 independent integration, and U10–U12 broader ownership evidence. Missing external collaboration never becomes an invented pass.
 
-## Prediction rubric
+## One evidence record
 
-Score 0 for vague pessimism or an unfalsifiable claim; 1 for a specific outcome with missing confidence/falsifier; 2 for all three with a discriminating experiment; 3 for a useful belief revision after contradictory evidence. Preserve the original prediction.
+Record module/competency; artifact or commit; behavior observed; command and actual result; assistance (none/docs/hint/explanation/agent code); assessor; date; changed-task result; follow-up date. Store actual practice time only. The browser journal is a local self-report capture tool; it does not grade, certify or automatically complete modules. An assessor belongs in the skill ledger, not guessed from a successful test.
 
-## PR communication rubric
+## Feedback rubric
 
-Score problem, resulting behavior, alternatives/tradeoff, risks, and observed verification 0–2 each. A reviewer should understand the final implementation without reading the conversation. Explicitly distinguish measured results from expectations and unavailable infrastructure.
+For each essential competency, give a behavior rating separately:
 
-## Explain-back and transfer
+| Rating | Observed behavior |
+| --- | --- |
+| Unassessed | No sufficient attempt supplied |
+| 1 | Reproduces and explains a worked example |
+| 2 | Completes a bounded task with guidance |
+| 3 | Independently completes, verifies and explains a bounded task |
+| 4 | Handles an unfamiliar variation and defends relevant tradeoffs |
+| 5 | Can teach the skill and identify when its technique is inappropriate |
 
-Diff closed: explain the request/state path, defend an alternative, analyze a concurrency or partial-failure scenario, and identify the first breaking point. Then alter a requirement or inject an unfamiliar failure. A memorized walkthrough without transfer does not support level 3.
+Evaluate correctness, reasoning, diagnosis/verification, independence and communication. State evidence for each; do not average away a data-loss, authorization or unexplained correctness failure. Fluent explanation alone is insufficient. Syntax lookup in ordinary docs is compatible with independence. A successful copied implementation is delivery evidence, not independent skill.
 
-## Defect review scoring
+Feedback format: observed strength → exact gap and counterexample → smallest corrective exercise → fresh check. Keep the first hint conceptual. If two attempts reveal the same misconception, explain a different-domain example, then assess a changed problem later. Do not plant undisclosed defects in the learner's working project or produce answer keys in the normal learner view.
 
-Record true findings, missed defects and false positives separately. Every finding needs a scenario, source line/test/trace, severity, confidence and invariant. Every miss names the pattern that would have caught it. An incorrect but convincing examiner finding is deliberate only in an agreed exercise; the learner must rebut it with evidence.
+## Module advancement
+
+Instruction precedes independent practice. Both declared competencies need the target behavior (3 in foundations, 4 in later modules), with verified task behavior and changed-example evidence. After an initial successful check the learner may provisionally study the next module while a delayed check is scheduled. Mark the gate pending until that check occurs. A failed delayed check triggers a small review task; it does not erase unrelated learning.
+
+Small exercises need three lines and a quick explain-back. End-to-end changes need a plan, regression evidence, a reviewable diff and a handoff. An AI reviewer is provisional and cannot be called an independent human review. Review the exact learner revision, not the prepared platform commit.
+
+## Three readiness gates
+
+| Gate | Required evidence | Practical conclusion |
+| --- | --- | --- |
+| Foundation | U01–U06 behavior, two independent changed tasks on separate days, one end-to-end request explanation, one diagnosed defect | Ready for bounded independent feature practice |
+| Independent delivery | Two distinct features through brief, implementation, tests and review; one unfamiliar-code maintenance change; one permission boundary; one measured investigation; independently handled variation | Evidence relevant to mid-level responsibilities, with remaining supervision needs stated |
+| Senior practice | Independent-delivery evidence plus ambiguous design decisions, failure/recovery reasoning, actual collaboration/review, mentoring or enabling others, and responsibility revisited over multiple changes | Evidence to discuss with a practitioner for a particular role; a solo course cannot establish a universal senior title |
+
+The second-domain room-booking capstone prevents passing by memorizing one app. Explain one design alternative and diagnose a changed requirement before editing. Seek a real practitioner review at U07 and U12 when available. Actual team/user exposure is required for claims about shared ownership; simulations can prepare you but must remain labeled.
+
+## Delayed checks and adaptation
+
+Schedule a changed problem after 2–7 days and another around three weeks. These are convenient defaults. If recall fails, diagnose whether the gap is concept, tooling, testing or scope, then choose one smaller exercise. Reassess only affected skills. If work is consistently easy and independent, challenge out; if assistance remains high, shrink the next task and add guided practice. Never accelerate solely to hit a date.
 
 ## Readiness report
 
-State observed independent behaviors, unfamiliar variations handled, assistance required, communication evidence, operational exposure and human feedback. Then state what the evidence does not establish. Ratings follow SKILLS.md, with date and retest deadline. Never automatically translate points or milestones into “mid-level” or “senior.”
+State observed independent behaviors, unfamiliar variations, assistance, peer feedback, operational exposure and limitations. Link evidence and dates. List the two highest-value next assignments. No total points, completed lesson count, study hours or green CI output automatically translates into a job title.

@@ -15,4 +15,6 @@ TestResults/
 playwright-report/
 test-results/
 .exercise-answer-key*
+practice/learner/**/data/
+practice/learner/**/.data/
 *.log

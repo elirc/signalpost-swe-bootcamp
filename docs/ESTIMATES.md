@@ -1,7 +1,11 @@
-# Estimates and pilot accounting
+# Pacing and estimates
 
-Planning assumption: 15 focused hours/week. First two weeks are a pilot, not a promise about completion time. Reserve 70% for tickets and 30% for drills. The initial ticket estimates are in the curriculum; high-complexity implementation will require splitting and re-estimation.
+Capacity remains an unverified assumption of 15 focused learner hours/week. The first two weeks in [START_HERE](curriculum/START_HERE.md) reserve buffer and revisit time. At 5 or 10 hours, carry work forward; there is no catch-up debt.
 
-Record estimated low/high hours before starting; actual hours and why they differed afterward. Track implementing, investigating, reviewing and record-keeping separately. Report the four-bucket split after week one and week two. If record-keeping exceeds 15%, simplify duplicate records before continuing.
+Module task ranges are provisional focused-work estimates, including instruction within guided tasks and feedback within review tasks. Independent tasks account for more than the retained 30% planned floor. Delayed checks, remedial work, project setup friction and real-world ownership can extend the schedule. The generator/portal calculate module counts and ranges from the authored data.
 
-No actual learner hours recorded. SOLO floor uses estimated milestone ticket hours, not ticket counts. Escalated SOLO work is recorded honestly and the remaining SOLO allocation is rebalanced.
+The old fixed 70/30 ticket/drill allocation and 540–1080-hour platform forecast are superseded for the active learning path. Study hours are not proof of competence and do not predict a promotion date.
+
+Track only enough time to revise pacing: learning/guided practice, independent practice, debugging, review and brief records. If tracking exceeds about five minutes per small session, simplify it. Actual learner time reported: zero. Agent runtime and generated output are not learner time.
+
+After two weeks compare estimates to actual effort and assistance. Reduce task size if conceptual/tooling gaps dominate; challenge out when independent evidence supports it. Re-estimate the next module rather than the whole career.

@@ -6,6 +6,7 @@ interface Ticket {
   id: string;
   title: string;
   mode: string;
+  step: string;
   competencies: string[];
   estimate: number[];
   context: string;
@@ -15,6 +16,16 @@ interface Ticket {
 }
 interface Milestone {
   id: number;
+  code: string;
+  phase: string;
+  prerequisites: string[];
+  concepts: string[];
+  example: string;
+  explanation: string;
+  guided: string[];
+  remediation: string;
+  readiness: string;
+  resources: { title: string; url: string }[];
   title: string;
   objective: string;
   competencies: string[];
@@ -26,7 +37,9 @@ interface Milestone {
 }
 interface Program {
   title: string;
+  version: number;
   weeklyHours: number;
+  phases: string[];
   milestones: Milestone[];
 }
 interface Evidence {
@@ -39,11 +52,14 @@ interface Evidence {
   bucket: string;
   createdAt: string;
   observationRecordedAt?: string;
+  assistance?: string;
+  artifact?: string;
+  explanation?: string;
 }
 const views = [
   "Overview",
   "Curriculum",
-  "Telemetry lab",
+  "Advanced reference",
   "Evidence journal",
 ] as const;
 type View = (typeof views)[number];
@@ -156,6 +172,10 @@ export function Workspace({ program }: { program: Program }) {
       }
   }, [notes, loaded]);
   const m = program.milestones[selected]!;
+  const first = program.milestones[0]!;
+  const firstHours = [0, 1].map((index) =>
+    first.tickets.reduce((total, t) => total + (t.estimate[index] ?? 0), 0),
+  );
   const ticket = m.tickets.find((t) => t.id === activeTicket);
   function navigate(next: View) {
     setView(next);
@@ -167,7 +187,12 @@ export function Workspace({ program }: { program: Program }) {
       new Blob(
         [
           JSON.stringify(
-            { version: 1, learning_status: "unassessed", entries: notes },
+            {
+              version: 2,
+              curriculum_version: program.version,
+              learning_status: "unassessed",
+              entries: notes,
+            },
             null,
             2,
           ),
@@ -223,6 +248,9 @@ export function Workspace({ program }: { program: Program }) {
       observation: String(form.get("observation") ?? "").trim(),
       hours: String(form.get("hours")),
       bucket: String(form.get("bucket")),
+      assistance: String(form.get("assistance") ?? "Not recorded"),
+      artifact: String(form.get("artifact") ?? "").trim(),
+      explanation: String(form.get("explanation") ?? "").trim(),
       createdAt: new Date().toISOString(),
     };
     setNotes((old) => [entry, ...old]);
@@ -239,7 +267,7 @@ export function Workspace({ program }: { program: Program }) {
           </span>
           signalpost<span className="brand-dot">.</span>
         </a>
-        <div className="workspace-label">ENGINEERING FIELDWORK</div>
+        <div className="workspace-label">YOUR ENGINEERING PRACTICE</div>
         <nav aria-label="Workspace">
           {views.map((item, i) => (
             <button
@@ -250,21 +278,23 @@ export function Workspace({ program }: { program: Program }) {
             >
               <span aria-hidden="true">{["◫", "≡", "⌁", "▤"][i]}</span>
               {item}
-              {item === "Curriculum" && <small>13</small>}
+              {item === "Curriculum" && (
+                <small>{program.milestones.length}</small>
+              )}
             </button>
           ))}
         </nav>
         <div className="sidebar-bottom">
           <span className="status-dot" /> SELF-PACED PROGRAM
           <p>
-            Build the system.
+            Practice the skill.
             <br />
-            Earn the judgment.
+            Develop your judgment.
           </p>
           <div className="profile">
             <span>E</span>
             <div>
-              Engineering workspace<small>Independent study · Pilot</small>
+              Your learning workspace<small>Beginner-safe · Self-paced</small>
             </div>
           </div>
         </div>
@@ -285,20 +315,20 @@ export function Workspace({ program }: { program: Program }) {
               <div className="eyebrow">THE SIGNALPOST PROGRAM</div>
               <h1>
                 {view === "Overview"
-                  ? "Engineering, with evidence."
+                  ? "Grow as an engineer."
                   : view === "Curriculum"
-                    ? "From first commit to on-call."
-                    : view === "Telemetry lab"
-                      ? "Follow the signal."
+                    ? "Learn it. Build it. Explain it."
+                    : view === "Advanced reference"
+                      ? "Explore an advanced example."
                       : "Make your reasoning visible."}
               </h1>
               <p>
                 {view === "Overview"
-                  ? "A production project. A deliberate practice. A record of what you can do."
+                  ? "Start with fundamentals. Build independent skill. Grow into wider responsibility."
                   : view === "Curriculum"
-                    ? "Thirteen milestones. Fifty-two tickets. Progress earned through transfer."
-                    : view === "Telemetry lab"
-                      ? "Explore synthetic telemetry, then query your own local ingestion service."
+                    ? `${program.milestones.length} modules, ${program.milestones.reduce((sum, stage) => sum + stage.tickets.length, 0)} practice tasks. Instruction before independent work.`
+                    : view === "Advanced reference"
+                      ? "Optional material for later study. Begin here after the foundations."
                       : "Predictions, observations, and honest accounting of your work."}
               </p>
             </div>
@@ -316,171 +346,215 @@ export function Workspace({ program }: { program: Program }) {
               <section className="hero">
                 <div className="hero-copy">
                   <div className="eyebrow light">
-                    YOUR NEXT STEP <span>01 / CALIBRATION</span>
+                    YOUR FIRST SESSION <span>75 MINUTES · U01</span>
                   </div>
                   <h2>
-                    Start with what{" "}
-                    <br />
-                    you can prove.
+                    Small programs. <br />
+                    Real understanding.
                   </h2>
                   <p>
-                    Trace a request. Diagnose a failure. Write a delegation
-                    brief. Establish your baseline before assigning yourself a
-                    level.
+                    Run a file, trace a function, then change it yourself. Start
+                    with guidance and build toward independent work.
                   </p>
                   <button
                     className="button"
                     onClick={() => {
                       setSelected(0);
+                      setActiveTicket(first.tickets[0]!.id);
                       navigate("Curriculum");
                     }}
                   >
-                    Open calibration <span aria-hidden="true">→</span>
+                    Start learning <span aria-hidden="true">→</span>
                   </button>
                   <div className="hero-footer">
-                    <span>4 tickets</span>
-                    <span>12–24 estimated hours</span>
-                    <span>50% planned SOLO</span>
+                    <span>No prior code assumed</span>
+                    <span>No cloud setup</span>
+                    <span>One skill at a time</span>
                   </div>
                 </div>
                 <div
                   className="signal-diagram"
-                  aria-label="System flow: ingest to durable storage to Sentinel to page"
+                  aria-label="Learning loop: learn, practice, explain, revisit"
                 >
-                  <div className="diagram-caption">THE SYSTEM YOU’LL BUILD</div>
+                  <div className="diagram-caption">HOW YOU WILL DEVELOP</div>
                   <div className="diagram-node">
-                    <span>01</span>Ingest <small>OTLP / HTTP</small>
+                    <span>01</span>Learn <small>A WORKED EXAMPLE</small>
                   </div>
                   <div className="connector" />
                   <div className="diagram-node highlighted">
-                    <span>02</span>Durable storage{" "}
-                    <small>POSTGRES + TIMESCALE</small>
+                    <span>02</span>Practice <small>YOUR OWN CODE</small>
                   </div>
                   <div className="connector" />
                   <div className="diagram-row">
                     <div className="diagram-node">
-                      <span>03</span>Sentinel
+                      <span>03</span>Explain
                     </div>
                     <span>→</span>
                     <div className="diagram-node">
-                      Page <span>↗</span>
+                      Revisit <span>↻</span>
                     </div>
                   </div>
                   <div className="diagram-foot">
-                    <span className="status-dot" /> No silent drops. No
-                    invisible assumptions.
+                    <span className="status-dot" /> A changed problem shows what
+                    transfers.
                   </div>
                 </div>
               </section>
               <section className="metrics" aria-label="Program status">
                 <article>
-                  <span>PROGRAM SCOPE</span>
+                  <span>YOUR PATH</span>
                   <strong>
-                    13 <small>milestones</small>
+                    {program.milestones.length} <small>modules</small>
                   </strong>
-                  <p>Calibration through handover</p>
+                  <p>Foundations to senior responsibilities</p>
                 </article>
                 <article>
-                  <span>LEARNING EVIDENCE</span>
+                  <span>PRACTICE RECORD</span>
                   <strong>
                     {notes.length} <small>entries</small>
                   </strong>
-                  <p>Self-reported · awaiting assessment</p>
+                  <p>Self-reported · not a skill score</p>
                 </article>
                 <article>
                   <span>PILOT CAPACITY</span>
                   <strong>
-                    15 <small>hours / week</small>
+                    {program.weeklyHours} <small>hours / week</small>
                   </strong>
-                  <p>Planning assumption · revise with data</p>
+                  <p>Provisional · reduce to fit your week</p>
                 </article>
                 <article>
-                  <span>COMPETENCE STATUS</span>
+                  <span>PERSONAL BASELINE</span>
                   <strong className="status-text">Unassessed</strong>
-                  <p>Working code does not establish skill</p>
+                  <p>Challenge out with independent evidence</p>
                 </article>
               </section>
               <div className="two-column">
                 <section className="panel">
                   <div className="section-title">
-                    <h2>The path ahead</h2>
+                    <h2>Three stages of growth</h2>
                     <button
                       className="text-button"
                       onClick={() => navigate("Curriculum")}
                     >
-                      View all milestones →
+                      All modules →
                     </button>
                   </div>
-                  {program.milestones.slice(0, 4).map((stage, i) => (
-                    <button
-                      className="path-row"
-                      key={stage.id}
-                      onClick={() => {
-                        setSelected(i);
-                        navigate("Curriculum");
-                      }}
-                    >
-                      <span className={i === 0 ? "step current" : "step"}>
-                        {String(stage.id).padStart(2, "0")}
-                      </span>
-                      <span>
-                        <strong>{stage.title}</strong>
-                        <small>{stage.competencies.join(" · ")}</small>
-                      </span>
-                      <span className="pill">
-                        {i === 0 ? "START HERE" : "PLANNED"}
-                      </span>
-                      <span aria-hidden="true">↗</span>
-                    </button>
-                  ))}
+                  {program.phases.map((phase, i) => {
+                    const firstIndex = program.milestones.findIndex(
+                      (stage) => stage.phase === phase,
+                    );
+                    const members = program.milestones.filter(
+                      (stage) => stage.phase === phase,
+                    );
+                    return (
+                      <button
+                        className="path-row"
+                        key={phase}
+                        onClick={() => {
+                          setSelected(firstIndex);
+                          setActiveTicket(null);
+                          navigate("Curriculum");
+                        }}
+                      >
+                        <span className={i === 0 ? "step current" : "step"}>
+                          {i + 1}
+                        </span>
+                        <span>
+                          <strong>{phase}</strong>
+                          <small>
+                            {members[0]?.code}–{members.at(-1)?.code} ·{" "}
+                            {
+                              [
+                                "Write, debug and build a usable app",
+                                "Deliver, maintain and verify features",
+                                "Design, operate and enable others",
+                              ][i]
+                            }
+                          </small>
+                        </span>
+                        <span aria-hidden="true">↗</span>
+                      </button>
+                    );
+                  })}
                 </section>
                 <section className="panel fieldnote">
-                  <div className="eyebrow">FIELD NOTE / 001</div>
+                  <div className="eyebrow">YOUR STARTING POINT</div>
                   <h2>
-                    Delegation is a skill.{" "}
-                    <br />
-                    Understanding is yours.
+                    Support first. <br />
+                    Independence through practice.
                   </h2>
                   <p>
-                    Keep two records: whether the software works, and whether
-                    you can independently explain, change, and operate it.
+                    U01 takes about {firstHours.join("–")} focused hours across
+                    several sessions. Already comfortable? Demonstrate the
+                    independent task and a changed example to skip familiar
+                    material.
                   </p>
                   <div className="rule" />
-                  <div className="mini-status">
-                    <span>delivery_status</span>
-                    <strong>Evidence required</strong>
-                  </div>
-                  <div className="mini-status">
-                    <span>learning_status</span>
-                    <strong>Unassessed</strong>
-                  </div>
-                  <button
-                    className="text-button"
-                    onClick={() => navigate("Evidence journal")}
-                  >
-                    Record a prediction →
-                  </button>
+                  <p>
+                    A completed course does not confer a job title. Mid-level
+                    and senior readiness need evidence of ownership, judgment
+                    and work with other people.
+                  </p>
                 </section>
               </div>
+              <section className="panel spaced">
+                <div className="eyebrow">TODAY · ONE SMALL OUTCOME</div>
+                <h2>Run, predict, explain</h2>
+                <p>
+                  <a
+                    className="text-button"
+                    href="/guides/FIRST_SESSION.md"
+                    download
+                  >
+                    Save the full 75-minute guide →
+                  </a>
+                </p>
+                <ol className="guided-list">
+                  <li>
+                    Open the repository in your editor. Run{" "}
+                    <code>node --version</code> in its terminal.
+                  </li>
+                  <li>
+                    Follow the U01 worked example. Predict its output before
+                    running it, then change one boundary.
+                  </li>
+                  <li>
+                    Open <code>practice/learner/u01.mjs</code>. Its unfinished
+                    functions are your first practice.
+                  </li>
+                  <li>
+                    Run <code>node --test practice/checks/u01.test.mjs</code>.
+                    Initial failures are expected; read one before editing.
+                  </li>
+                  <li>
+                    Keep a three-line note: intention, actual result, help used.
+                    Return to a changed example after a few days.
+                  </li>
+                </ol>
+                <p className="muted">
+                  The complete 75-minute guide is in{" "}
+                  <code>docs/curriculum/FIRST_SESSION.md</code>. No database or
+                  backend setup is needed.
+                </p>
+              </section>
               <section className="practice-strip">
                 <span className="practice-symbol" aria-hidden="true">
-                  ↺
+                  ↻
                 </span>
                 <div>
-                  <strong>The weekly practice</strong>
+                  <strong>When you get stuck</strong>
                   <p>
-                    A no-AI hour. A planted-defect review. One rotating drill.
+                    Reduce the input. Inspect a value. Take one concept hint.
+                    Retry a changed example.
                   </p>
                 </div>
-                <span>
-                  70% ticket work <span className="muted">/</span> 30% drills
-                </span>
+                <span>Practice + feedback + delayed recall</span>
               </section>
             </>
           )}
           {view === "Curriculum" && (
             <div className="curriculum-layout">
-              <nav className="milestone-list" aria-label="Milestones">
+              <nav className="milestone-list" aria-label="Learning modules">
                 {program.milestones.map((stage, i) => (
                   <button
                     key={stage.id}
@@ -491,19 +565,21 @@ export function Workspace({ program }: { program: Program }) {
                     }}
                     aria-current={selected === i ? "step" : undefined}
                   >
-                    <span>{String(stage.id).padStart(2, "0")}</span>
+                    <span>{stage.code}</span>
                     <div>
                       {stage.title}
-                      <small>{stage.tickets.length} tickets · unassessed</small>
+                      <small>{stage.phase} · unassessed</small>
                     </div>
                   </button>
                 ))}
               </nav>
               <section className="panel lesson">
                 <div className="eyebrow">
-                  MILESTONE {String(m.id).padStart(2, "0")}{" "}
+                  {m.code} · {m.phase}{" "}
                   <span className="pill">
-                    TARGET LEVEL {m.targetLevel} · PROVISIONAL
+                    {m.targetLevel === 3
+                      ? "INDEPENDENT TASK"
+                      : "UNFAMILIAR VARIATION"}
                   </span>
                 </div>
                 <h2>{m.title}</h2>
@@ -513,12 +589,49 @@ export function Workspace({ program }: { program: Program }) {
                     <span key={c}>{c}</span>
                   ))}
                 </div>
-                <h3>Working knowledge</h3>
-                <p>{m.lesson}</p>
-                <h3>Work the tickets</h3>
                 <p className="muted">
-                  Write a plan and prediction before implementation. SOLO means
-                  no AI. Prepared code earns no SOLO credit.
+                  Prerequisites:{" "}
+                  {m.prerequisites.length
+                    ? m.prerequisites.join(", ")
+                    : "None. Begin with the guided example."}{" "}
+                  Use evidence to challenge out of familiar material.
+                </p>
+                <p>
+                  <a href={`/guides/${m.code}.md`} download>
+                    Save this module guide
+                  </a>
+                  {" · "}
+                  <a href="/guides/ASSESSMENT.md" download>
+                    Assessment guide
+                  </a>
+                  {" · "}
+                  <a href="/guides/PROJECTS.md" download>
+                    Project setup
+                  </a>
+                </p>
+                <h3>Understand the idea</h3>
+                <p>{m.lesson}</p>
+                <ul className="guided-list">
+                  {m.concepts.map((concept) => (
+                    <li key={concept}>{concept}</li>
+                  ))}
+                </ul>
+                <h3>A worked example</h3>
+                <pre className="worked-code">
+                  <code>{m.example}</code>
+                </pre>
+                <p>{m.explanation}</p>
+                <h3>Try it with guidance</h3>
+                <ol className="guided-list">
+                  {m.guided.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+                <h3>Your practice sequence</h3>
+                <p className="muted">
+                  Learn with guidance, build independently, then transfer and
+                  review. PAIR means you type with guidance; SOLO means no AI
+                  during the attempt. Ordinary documentation is allowed.
                 </p>
                 {m.tickets.map((t) => (
                   <button
@@ -547,7 +660,7 @@ export function Workspace({ program }: { program: Program }) {
                 {ticket && (
                   <article className="ticket-detail">
                     <div className="eyebrow">
-                      {ticket.id} / ACCEPTANCE CONTRACT
+                      {ticket.id} / {ticket.step}
                     </div>
                     <h3>{ticket.title}</h3>
                     <p>{ticket.context}</p>
@@ -574,14 +687,29 @@ export function Workspace({ program }: { program: Program }) {
                   </article>
                 )}
                 <div className="exercise">
-                  <div className="eyebrow">TRANSFER EXERCISE</div>
+                  <div className="eyebrow">DELAYED TRANSFER</div>
                   <p>{m.transfer}</p>
                   <small>
-                    Use a changed example. Record evidence before assigning a
-                    rating.
+                    Revisit after 2–7 days with the old solution closed, then
+                    again around three weeks. These are scheduling defaults, not
+                    mastery guarantees.
                   </small>
                 </div>
-                <h3>Adversarial scenario</h3>
+                <h3>If this is too difficult</h3>
+                <p>{m.remediation}</p>
+                <h3>Evidence to move forward</h3>
+                <p>{m.readiness}</p>
+                <h3>Targeted reading</h3>
+                <ul>
+                  {m.resources.map((resource) => (
+                    <li key={resource.url}>
+                      <a href={resource.url} target="_blank" rel="noreferrer">
+                        {resource.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <h3>One debugging scenario</h3>
                 <p>{m.drill}</p>
                 <p className="muted">
                   Run planted defects only in disposable worktrees with
@@ -591,11 +719,12 @@ export function Workspace({ program }: { program: Program }) {
               </section>
             </div>
           )}
-          {view === "Telemetry lab" && (
+          {view === "Advanced reference" && (
             <>
               <div className="notice">
-                Demonstration data is synthetic. No throughput, SLO, or
-                operational readiness is established by this view.
+                Optional U09–U11 reference. Demonstration data is synthetic. No
+                throughput, SLO, or operational readiness is established by this
+                view.
               </div>
               <section className="panel">
                 <div className="section-title">
@@ -691,58 +820,88 @@ export function Workspace({ program }: { program: Program }) {
                     <textarea
                       name="prediction"
                       required
-                      placeholder="State a specific outcome before running the experiment."
-                    />
-                  </label>
-                  <div className="form-row">
-                    <label>
-                      Confidence (%)
-                      <input
-                        name="confidence"
-                        type="number"
-                        min="0"
-                        max="100"
-                        required
-                        defaultValue="50"
-                      />
-                    </label>
-                    <label>
-                      Actual hours
-                      <input
-                        name="hours"
-                        type="number"
-                        min="0"
-                        max="100"
-                        step="0.25"
-                        required
-                        defaultValue="0"
-                      />
-                    </label>
-                  </div>
-                  <label>
-                    Falsifying observation
-                    <textarea
-                      name="falsifier"
-                      required
-                      placeholder="Record the result that would prove this prediction wrong."
+                      placeholder="What do you expect, and why? Save before running if possible."
                     />
                   </label>
                   <label>
                     Observed result / evidence
                     <textarea
                       name="observation"
-                      placeholder="Leave blank to save the prediction before the experiment. Append the observed result afterward."
+                      placeholder="Actual output and what you learned. Leave blank to append it after the attempt."
                     />
                   </label>
                   <label>
-                    Time bucket
-                    <select name="bucket">
-                      <option>Implementing</option>
-                      <option>Investigating</option>
-                      <option>Reviewing</option>
-                      <option>Record-keeping</option>
+                    Help used
+                    <select name="assistance" defaultValue="Not yet recorded">
+                      <option>Not yet recorded</option>
+                      <option>No AI; ordinary documentation only</option>
+                      <option>Concept hint</option>
+                      <option>Guided example or explanation</option>
+                      <option>Agent-written code</option>
                     </select>
                   </label>
+                  <details className="journal-details">
+                    <summary>Optional assessment details</summary>
+                    <p className="muted">
+                      A short intention, result and help record is enough for a
+                      small exercise. Add detail when it helps review.
+                    </p>
+                    <label>
+                      Artifact / command
+                      <input
+                        name="artifact"
+                        placeholder="Your file, commit, command or evidence location"
+                      />
+                    </label>
+                    <label>
+                      Explain-back / next gap
+                      <textarea
+                        name="explanation"
+                        placeholder="Inputs, decisions, limits and the next gap."
+                      />
+                    </label>
+                    <div className="form-row">
+                      <label>
+                        Confidence (%)
+                        <input
+                          name="confidence"
+                          type="number"
+                          min="0"
+                          max="100"
+                          placeholder="Optional"
+                        />
+                      </label>
+                      <label>
+                        Actual hours
+                        <input
+                          name="hours"
+                          type="number"
+                          min="0"
+                          max="100"
+                          step="0.25"
+                          defaultValue="0"
+                        />
+                      </label>
+                    </div>
+                    <label>
+                      Falsifying observation
+                      <textarea
+                        name="falsifier"
+                        placeholder="What result would show your prediction was wrong?"
+                      />
+                    </label>
+                    <label>
+                      Time bucket
+                      <select name="bucket">
+                        <option>Learning / guided practice</option>
+                        <option>Independent practice</option>
+                        <option>Implementing</option>
+                        <option>Investigating</option>
+                        <option>Reviewing</option>
+                        <option>Record-keeping</option>
+                      </select>
+                    </label>
+                  </details>
                   <button className="button secondary" disabled={!loaded}>
                     Save evidence
                   </button>
@@ -752,8 +911,7 @@ export function Workspace({ program }: { program: Program }) {
                 <div className="panel fieldnote">
                   <div className="eyebrow">EVIDENCE ≠ ASSESSMENT</div>
                   <h2>
-                    Keep the claim smaller{" "}
-                    <br />
+                    Keep the claim smaller <br />
                     than the evidence.
                   </h2>
                   <p>
@@ -776,21 +934,121 @@ export function Workspace({ program }: { program: Program }) {
                         key={`${note.createdAt}-${i}`}
                       >
                         <div className="eyebrow">
-                          {note.ticket} · {note.confidence}% CONFIDENCE
+                          {note.ticket}
+                          {note.confidence
+                            ? ` · ${note.confidence}% CONFIDENCE`
+                            : ""}
+                          {note.ticket.startsWith("M") && (
+                            <span> · Legacy advanced program</span>
+                          )}
                         </div>
                         <h3>{note.prediction}</h3>
+                        {note.assistance && (
+                          <p>
+                            <strong>Help:</strong> {note.assistance}
+                          </p>
+                        )}
+                        {note.artifact && (
+                          <p>
+                            <strong>Artifact:</strong> {note.artifact}
+                          </p>
+                        )}
+                        {note.explanation && (
+                          <p>
+                            <strong>Explain-back:</strong> {note.explanation}
+                          </p>
+                        )}
                         <p>
                           <strong>Falsifier:</strong> {note.falsifier}
                         </p>
-                        {note.observation ? <p>{note.observation}</p> : <form action={(form) => {
-                          const observation = String(form.get("result") ?? "").trim();
-                          if (!observation) return;
-                          setNotes(old => old.map(item => item === note ? {...item, observation, observationRecordedAt: new Date().toISOString()} : item));
-                          setMessage("Observation appended. The original prediction is preserved.");
-                        }}>
-                          <label>Append observed result<textarea name="result" required placeholder="Record actual output and evidence; preserve the original prediction." /></label>
-                          <button className="button secondary">Append result</button>
-                        </form>}
+                        {note.observation ? (
+                          <p>{note.observation}</p>
+                        ) : (
+                          <form
+                            action={(form) => {
+                              const observation = String(
+                                form.get("result") ?? "",
+                              ).trim();
+                              if (!observation) return;
+                              setNotes((old) =>
+                                old.map((item) =>
+                                  item === note
+                                    ? {
+                                        ...item,
+                                        observation,
+                                        hours: String(
+                                          form.get("actualHours") ?? item.hours,
+                                        ),
+                                        assistance: String(
+                                          form.get("actualHelp") ??
+                                            item.assistance ??
+                                            "Not recorded",
+                                        ),
+                                        artifact: String(
+                                          form.get("actualArtifact") ??
+                                            item.artifact ??
+                                            "",
+                                        ),
+                                        observationRecordedAt:
+                                          new Date().toISOString(),
+                                      }
+                                    : item,
+                                ),
+                              );
+                              setMessage(
+                                "Observation appended. The original prediction is preserved.",
+                              );
+                            }}
+                          >
+                            <label>
+                              Append observed result
+                              <textarea
+                                name="result"
+                                required
+                                placeholder="Record actual output and evidence; preserve the original prediction."
+                              />
+                            </label>
+                            <label>
+                              Hours after the attempt
+                              <input
+                                name="actualHours"
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="0.25"
+                                defaultValue={note.hours}
+                                required
+                              />
+                            </label>
+                            <label>
+                              Actual help used
+                              <select
+                                name="actualHelp"
+                                defaultValue={note.assistance ?? "Not recorded"}
+                              >
+                                <option>Not recorded</option>
+                                <option>Not yet recorded</option>
+                                <option>
+                                  No AI; ordinary documentation only
+                                </option>
+                                <option>Concept hint</option>
+                                <option>Guided example or explanation</option>
+                                <option>Agent-written code</option>
+                              </select>
+                            </label>
+                            <label>
+                              Result artifact
+                              <input
+                                name="actualArtifact"
+                                defaultValue={note.artifact ?? ""}
+                                placeholder="File, commit or command"
+                              />
+                            </label>
+                            <button className="button secondary">
+                              Append result
+                            </button>
+                          </form>
+                        )}
                         <small>
                           {note.hours}h · {note.bucket} ·{" "}
                           {new Date(note.createdAt).toLocaleDateString()}
@@ -804,7 +1062,8 @@ export function Workspace({ program }: { program: Program }) {
           )}
           <footer>
             <span>
-              signalpost <span className="muted">/</span> engineering fieldwork
+              signalpost <span className="muted">/</span> personal engineering
+              practice
             </span>
             <span>
               Evidence before confidence.{" "}

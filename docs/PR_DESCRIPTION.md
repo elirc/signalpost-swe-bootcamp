@@ -1,13 +1,7 @@
-# Prepare the Signalpost bootcamp and verified local foundation
+# Refocus Signalpost on personal engineering skill development
 
-Signalpost began as an empty directory and an ambitious project/mentoring contract. This change provides a self-paced Next.js workspace with 13 milestones, 52 full tickets, a prediction/evidence journal, and a synthetic telemetry lab. It also establishes bounded OTLP/HTTP JSON ingestion, transactional raw-payload receipts and normalized telemetry storage, tenant-scoped queries, and a .NET 10 Sentinel foundation.
+The prior program started with advanced platform diagnosis and delivery before establishing programming fundamentals. This change makes the active path a 12-module progression through foundations, independent feature ownership and senior responsibilities, with worked examples, concrete independent tasks, delayed transfer and remediation.
 
-Delivery evidence and learner competence are tracked separately. The autonomous-work amendment allows preparation without a live calibration interview, but does not invent learner plans, SOLO hours, explain-backs, skill ratings, independent reviews or production operation.
+It adds a 75-minute first lesson, three deliberately unsolved starting labs, a disposable SQL console, project/mentoring/readiness guides and downloadable lessons. The portal now leads with practice and records assistance and artifacts without awarding skill ratings. New U task IDs preserve original M journal attribution. The original platform remains optional advanced reference; backend behavior and schema are unchanged.
 
-Verified locally: strict TypeScript; 16 JS invariant tests plus the subsequently added empty-log regression; 14 xUnit domain tests; production Next build; curriculum validation; five browser behaviors including automated accessibility, with failed contrast checks corrected and rerun; npm production audit and .NET transitive package scan with no reported vulnerabilities. Exact commands and limits are in run 0001.
-
-Risks and limits: the Docker/Timescale test suite cannot start on this host; full OTLP binary/metric compatibility, interactive identity/RBAC, incident-management workflows, maintenance jobs, real notifications, distributed restart/load tests and production SLOs remain open. This is a local foundation, not a completed production platform. No public deployment, remote CI, independent review or human assessment has occurred. The branch must not be merged merely because local checks pass.
-
-Alternatives and tradeoffs are recorded in six ADRs: service boundaries, durable acknowledgement/backpressure, query isolation and private aggregates, persisted alert effects/leadership, elapsed-time on-call scheduling, and upgrade/recovery policy. Original JSON preservation and the private aggregate mirror add write/storage overhead that must be measured before the full-rate claim.
-
-This is an agent-authored draft. It is not graded as the learner's communication artifact. The learner's independent review and defense remain pending.
+Validation: TypeScript, production build, curriculum/prerequisite/guide checks, generator reproducibility, SQL rollback smoke and seven distinct browser behaviors across full/focused runs. A journal locator was corrected after its initial timeout; persistence/export then passed. Starter checks intentionally reject unsolved work. Details and limits are in docs/runs/0002-learning-first-review.md. Learner competence, outside review, sustained team ownership and all job-level claims remain unassessed.

@@ -11,3 +11,8 @@ Agent implementation findings, not learner credit: ambiguous acknowledgement req
 Ticket/commit; mode and any escalation; prior prediction/confidence/falsifier; observation; mistake pattern; repeatable successful behavior; smallest transfer exercise; changed-example result; actual time buckets; assessor and evidence links.
 
 On an explain-back miss, preserve behaviorally correct code. Assign an exposing exercise, then reassess on an unfamiliar example. Revert only for a behavioral reason.
+# 2026-09-07 — learning-first redesign (preparation, not learner credit)
+
+Review found that the original advanced platform sequence assumed foundations and let delivery volume dominate the learning path. Replaced it with U01–U12: instruction, guided practice, independent tasks, changed examples and feedback. The beginner labs are intentionally unsolved. The SQL sandbox demonstrated rollback; generator and portal checks establish material quality, not personal competence.
+
+All learner abilities remain unassessed; no actual learner hours or outside feedback were supplied. Next learning evidence is guided U01-01 followed by an independent U01-02 artifact, explanation and delayed variation. Preserve all earlier records below as history; their M references belong to the advanced program.

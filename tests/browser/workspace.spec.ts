@@ -3,48 +3,69 @@ import AxeBuilder from "@axe-core/playwright";
 test("curriculum, evidence persistence and export", async ({ page }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Engineering, with evidence." }),
+    page.getByRole("heading", { name: "Grow as an engineer." }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Open calibration" }).click();
+  await page.getByRole("button", { name: "Start learning" }).click();
   await expect(
-    page.getByRole("heading", { name: "Calibration", exact: true }),
+    page.getByRole("heading", {
+      name: "Programming you can explain",
+      exact: true,
+    }),
   ).toBeVisible();
   await page
     .getByRole("button", {
-      name: /Trace a request through an unfamiliar service/,
+      name: /Implement the task summary/,
     })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "Trace a request through an unfamiliar service without AI",
+      name: "Implement the task summary",
     }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Write the prediction" }).click();
+  await page.getByText("Optional assessment details", { exact: true }).click();
   await page
     .getByLabel("Prediction", { exact: true })
-    .fill("A rejected batch creates zero durable rows");
+    .fill("Only unfinished task titles are returned");
   await page
     .getByLabel("Falsifying observation")
-    .fill("Any rejected batch ID appears in storage");
+    .fill("A completed task title appears in the result");
   await page.getByRole("button", { name: "Save evidence" }).click();
   await expect(page.getByRole("status")).toContainText(
     "Learning remains unassessed",
   );
-  const original = await page.evaluate(() => JSON.parse(localStorage.getItem("signalpost-evidence-v1") ?? "[]")[0]);
-  await page.getByLabel("Append observed result").fill("Synthetic browser verification result");
+  const original = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("signalpost-evidence-v1") ?? "[]")[0],
+  );
+  await page
+    .getByLabel("Append observed result")
+    .fill("Synthetic browser verification result");
+  await page.getByLabel("Hours after the attempt").fill("1.25");
+  await page
+    .getByRole("combobox", { name: "Actual help used", exact: true })
+    .selectOption("Concept hint");
+  await page.getByLabel("Result artifact").fill("practice/learner/u01.mjs");
   await page.getByRole("button", { name: "Append result" }).click();
-  await expect(page.getByRole("status")).toContainText("original prediction is preserved");
-  const appended = await page.evaluate(() => JSON.parse(localStorage.getItem("signalpost-evidence-v1") ?? "[]")[0]);
+  await expect(page.getByRole("status")).toContainText(
+    "original prediction is preserved",
+  );
+  const appended = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("signalpost-evidence-v1") ?? "[]")[0],
+  );
   expect(appended.prediction).toBe(original.prediction);
   expect(appended.createdAt).toBe(original.createdAt);
   expect(appended.observationRecordedAt).toBeTruthy();
+  expect(appended.ticket).toBe("U01-02");
+  expect(appended.hours).toBe("1.25");
+  expect(appended.assistance).toBe("Concept hint");
+  expect(appended.artifact).toBe("practice/learner/u01.mjs");
   await page.reload();
   await page
     .getByRole("button", { name: "Evidence journal", exact: true })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "A rejected batch creates zero durable rows",
+      name: "Only unfinished task titles are returned",
     }),
   ).toBeVisible();
   const download = page.waitForEvent("download");
@@ -54,7 +75,7 @@ test("curriculum, evidence persistence and export", async ({ page }) => {
 test("synthetic data is labeled and logs are virtualized", async ({ page }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Telemetry lab", exact: true })
+    .getByRole("button", { name: "Advanced reference", exact: true })
     .click();
   await expect(
     page.getByText("Demonstration data is synthetic.", { exact: false }),
@@ -75,7 +96,7 @@ test("overview and curriculum satisfy automated accessibility checks", async ({
         .analyze()
     ).violations,
   ).toEqual([]);
-  await page.getByRole("button", { name: "Open calibration" }).click();
+  await page.getByRole("button", { name: "Start learning" }).click();
   expect(
     (
       await new AxeBuilder({ page })
@@ -92,7 +113,7 @@ test("mobile layout has no horizontal overflow", async ({ page }) => {
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBe(true);
-  await page.getByRole("button", { name: "Open calibration" }).click();
+  await page.getByRole("button", { name: "Start learning" }).click();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -106,4 +127,57 @@ test("query is unavailable rather than synthetic success without configuration",
     data: { signal: "logs" },
   });
   expect([401, 503]).toContain(response.status());
+});
+
+test("first-session and module guides are available without backend setup", async ({
+  request,
+}) => {
+  const first = await request.get("/guides/FIRST_SESSION.md");
+  expect(first.status()).toBe(200);
+  expect(await first.text()).toContain(
+    "node --test practice/checks/u01.test.mjs",
+  );
+  const module = await request.get("/guides/U12.md");
+  expect(module.status()).toBe(200);
+  expect(await module.text()).toContain("Transfer to room booking");
+});
+
+test("new path keeps legacy evidence attributable and does not award competence", async ({
+  page,
+}) => {
+  const legacy = {
+    ticket: "M00-01",
+    prediction: "Historical prediction",
+    confidence: "60",
+    falsifier: "Historical falsifier",
+    observation: "Historical result",
+    hours: "1",
+    bucket: "Investigating",
+    createdAt: "2026-09-01T10:00:00.000Z",
+  };
+  await page.addInitScript(
+    (entry) =>
+      localStorage.setItem("signalpost-evidence-v1", JSON.stringify([entry])),
+    legacy,
+  );
+  await page.goto("/");
+  await expect(page.getByText("Unassessed", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Start learning" }).click();
+  await expect(
+    page.getByRole("heading", { name: "A worked example" }),
+  ).toBeVisible();
+  await expect(page.locator(".worked-code")).toContainText("countWarm");
+  await expect(
+    page.getByRole("heading", { name: "If this is too difficult" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Evidence journal", exact: true })
+    .click();
+  await expect(
+    page.getByText("Legacy advanced program", { exact: false }),
+  ).toBeVisible();
+  const retained = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("signalpost-evidence-v1") ?? "[]")[0],
+  );
+  expect(retained).toEqual(legacy);
 });

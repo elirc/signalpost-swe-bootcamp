@@ -1,0 +1,1743 @@
+{
+  "title": "Signalpost Engineering Bootcamp",
+  "version": 1,
+  "weeklyHours": 15,
+  "pilotWeeks": 2,
+  "milestones": [
+    {
+      "id": 0,
+      "title": "Calibration",
+      "objective": "Establish evidence before assigning a level.",
+      "competencies": [
+        "independent diagnosis",
+        "agent supervision"
+      ],
+      "targetLevel": 3,
+      "lesson": "Separate what you can explain from what you can reproduce. A successful agent run establishes delivery evidence, not transfer. Use a prediction with a falsifying observation to expose your assumptions.",
+      "tickets": [
+        {
+          "id": "M00-01",
+          "title": "Trace a request through an unfamiliar service without AI",
+          "mode": "SOLO",
+          "competencies": [
+            "independent diagnosis"
+          ],
+          "estimate": [
+            4,
+            8
+          ],
+          "context": "Establish evidence before assigning a level. This ticket addresses independent diagnosis within milestone 0.",
+          "acceptance": [
+            "Produce a request-path diagram and identify each trust boundary.",
+            "distinguish observation from inference."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M00-02",
+          "title": "Diagnose a failing transaction from a supplied trace",
+          "mode": "SOLO",
+          "competencies": [
+            "agent supervision"
+          ],
+          "estimate": [
+            2,
+            4
+          ],
+          "context": "Establish evidence before assigning a level. This ticket addresses agent supervision within milestone 0.",
+          "acceptance": [
+            "Reproduce a failure.",
+            "record a prediction before changing anything.",
+            "demonstrate a counterexample to the first hypothesis."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M00-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M00-03",
+          "title": "Prepare and audit a bounded delegation brief",
+          "mode": "DELEGATE",
+          "competencies": [
+            "independent diagnosis"
+          ],
+          "estimate": [
+            4,
+            8
+          ],
+          "context": "Establish evidence before assigning a level. This ticket addresses independent diagnosis within milestone 0.",
+          "acceptance": [
+            "Specify scope, invariants, environment, cancellation and verification.",
+            "identify what the delegate may not infer."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M00-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M00-04",
+          "title": "Defend your evidence and set the pilot schedule",
+          "mode": "PAIR",
+          "competencies": [
+            "agent supervision"
+          ],
+          "estimate": [
+            2,
+            4
+          ],
+          "context": "Establish evidence before assigning a level. This ticket addresses agent supervision within milestone 0.",
+          "acceptance": [
+            "Submit two independent artifacts.",
+            "record actual hours in four buckets.",
+            "choose target levels with reasons."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M00-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "An implementation passes every provided test but its author cannot explain rollback after a network failure. Assess what the evidence supports.",
+      "transfer": "Repeat diagnosis using a changed failure and no AI. Do not copy the original fix.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 1,
+      "title": "Walking skeleton",
+      "objective": "One real request, one durable write, one visible log.",
+      "competencies": [
+        "delivery pipeline",
+        "testing setup"
+      ],
+      "targetLevel": 3,
+      "lesson": "A walking skeleton crosses every deployment boundary with minimal domain breadth. Keep durable commit before success, separate public synthetic demonstrations from private data, and make failure visible in both tests and traces.",
+      "tickets": [
+        {
+          "id": "M01-01",
+          "title": "Build a migration upgrade and recovery test",
+          "mode": "SOLO",
+          "competencies": [
+            "delivery pipeline"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "One real request, one durable write, one visible log. This ticket addresses delivery pipeline within milestone 1.",
+          "acceptance": [
+            "Upgrade an empty and a seeded database.",
+            "demonstrate recovery with retained records.",
+            "record exact commands."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M01-02",
+          "title": "Write a durable log-ingest integration test",
+          "mode": "SOLO",
+          "competencies": [
+            "testing setup"
+          ],
+          "estimate": [
+            4,
+            8
+          ],
+          "context": "One real request, one durable write, one visible log. This ticket addresses testing setup within milestone 1.",
+          "acceptance": [
+            "Show failure before commit cannot return success.",
+            "verify persisted rows after a successful response.",
+            "test invalid payloads."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M01-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M01-03",
+          "title": "Deliver the first observable vertical slice",
+          "mode": "DELEGATE",
+          "competencies": [
+            "delivery pipeline"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "One real request, one durable write, one visible log. This ticket addresses delivery pipeline within milestone 1.",
+          "acceptance": [
+            "Accept one supported OTLP log batch through Fastify, persist it and query it through a scoped read path.",
+            "build web and CI."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M01-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M01-04",
+          "title": "Review the release and explain its failure path",
+          "mode": "PAIR",
+          "competencies": [
+            "testing setup"
+          ],
+          "estimate": [
+            4,
+            8
+          ],
+          "context": "One real request, one durable write, one visible log. This ticket addresses testing setup within milestone 1.",
+          "acceptance": [
+            "Produce a PR description and demo.",
+            "trace a rejected request.",
+            "verify keyboard navigation and secret handling.",
+            "prepare gated deployment."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M01-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "The database commits but the socket closes before success reaches the exporter. Trace a retry through the system.",
+      "transfer": "Change the input body to include an HTML script tag. Demonstrate safe display and explain the actual protection.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 2,
+      "title": "Domain core",
+      "objective": "Make storage and query semantics explicit.",
+      "competencies": [
+        "data modeling",
+        "storage design"
+      ],
+      "targetLevel": 3,
+      "lesson": "Choose indexes from access paths. High-cardinality labels multiply series and index cost. Time partitioning limits scans only when predicates align with partition keys. Aggregating averages requires carrying counts or sums, not averaging averages.",
+      "tickets": [
+        {
+          "id": "M02-01",
+          "title": "Design event-time retention and metric identities",
+          "mode": "SOLO",
+          "competencies": [
+            "data modeling"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Make storage and query semantics explicit. This ticket addresses data modeling within milestone 2.",
+          "acceptance": [
+            "Model resources, labels, series identity and late arrivals.",
+            "state event-time versus received-time policy.",
+            "defend a future-timestamp rule."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M02-02",
+          "title": "Implement a pure parameterized query compiler",
+          "mode": "SOLO",
+          "competencies": [
+            "storage design"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Make storage and query semantics explicit. This ticket addresses storage design within milestone 2.",
+          "acceptance": [
+            "Reject unsupported filters and identifiers.",
+            "keep malicious label text in parameters.",
+            "test half-open time ranges and bounded limits."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M02-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M02-03",
+          "title": "Deliver signal storage and aggregate migrations",
+          "mode": "DELEGATE",
+          "competencies": [
+            "data modeling"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Make storage and query semantics explicit. This ticket addresses data modeling within milestone 2.",
+          "acceptance": [
+            "Provide log/sample/span indexes, a trace-id path and continuous aggregates.",
+            "demonstrate upgrade and recovery on Timescale."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M02-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M02-04",
+          "title": "Defend storage costs using actual query plans",
+          "mode": "PAIR",
+          "competencies": [
+            "storage design"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Make storage and query semantics explicit. This ticket addresses storage design within milestone 2.",
+          "acceptance": [
+            "Capture EXPLAIN ANALYZE for sparse and dense labels.",
+            "estimate seven-day storage from measured record sizes.",
+            "submit an ADR."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M02-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A daily chart combines an hour with 10 samples and an hour with 10000 samples. Find the misleading aggregate.",
+      "transfer": "Add a second tenant with overlapping labels and measure the same query again.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 3,
+      "title": "Identity and organizations",
+      "objective": "Bind every privileged action to server-verified authority.",
+      "competencies": [
+        "authz modeling",
+        "tenancy"
+      ],
+      "targetLevel": 3,
+      "lesson": "Authentication identifies a credential; authorization constrains its actions and data. Derive organization scope from the authenticated principal. Defense in depth means both a parameterized tenant predicate and database permissions that fail closed.",
+      "tickets": [
+        {
+          "id": "M03-01",
+          "title": "Build an authorization matrix and attack it",
+          "mode": "SOLO",
+          "competencies": [
+            "authz modeling"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Bind every privileged action to server-verified authority. This ticket addresses authz modeling within milestone 3.",
+          "acceptance": [
+            "Define reader/operator/admin capabilities and ingest-only credentials.",
+            "list object-level attacks across tenants."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M03-02",
+          "title": "Verify tenant isolation under connection reuse",
+          "mode": "SOLO",
+          "competencies": [
+            "tenancy"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Bind every privileged action to server-verified authority. This ticket addresses tenancy within milestone 3.",
+          "acceptance": [
+            "Use two orgs and a restricted DB role.",
+            "forge org/project inputs.",
+            "reuse pooled connections.",
+            "verify no cross-tenant reads or writes."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M03-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M03-03",
+          "title": "Deliver organizations, roles and scoped credentials",
+          "mode": "DELEGATE",
+          "competencies": [
+            "authz modeling"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Bind every privileged action to server-verified authority. This ticket addresses authz modeling within milestone 3.",
+          "acceptance": [
+            "Implement scoped key creation/revocation plus identity/session flows and role checks.",
+            "audit privileged changes."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M03-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M03-04",
+          "title": "Review key rotation and public-surface boundaries",
+          "mode": "PAIR",
+          "competencies": [
+            "tenancy"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Bind every privileged action to server-verified authority. This ticket addresses tenancy within milestone 3.",
+          "acceptance": [
+            "Revoke a live key.",
+            "prove next use fails.",
+            "inspect logs/bundles for secrets.",
+            "independently review before public tenant access."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M03-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "An API checks organization membership but updates an incident by its globally unique ID alone. Construct the failure.",
+      "transfer": "Move an authorized user out of an organization while an old session remains open.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 4,
+      "title": "Ingestion pipeline",
+      "objective": "Make overload an observable sender outcome.",
+      "competencies": [
+        "backpressure",
+        "reliability under load"
+      ],
+      "targetLevel": 3,
+      "lesson": "Bound admission before parsing and buffering. A queue only postpones failure when arrival rate exceeds service rate. Define success, explicit rejection and uncertain network outcomes separately; reconcile sender IDs with durable storage.",
+      "tickets": [
+        {
+          "id": "M04-01",
+          "title": "Prove the capacity bound under a slow database",
+          "mode": "SOLO",
+          "competencies": [
+            "backpressure"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Make overload an observable sender outcome. This ticket addresses backpressure within milestone 4.",
+          "acceptance": [
+            "Block a durable write, exceed configured capacity and observe sender pressure.",
+            "prove memory is bounded.",
+            "release and verify accepted rows."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M04-02",
+          "title": "Build an honest load-accounting harness",
+          "mode": "SOLO",
+          "competencies": [
+            "reliability under load"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Make overload an observable sender outcome. This ticket addresses reliability under load within milestone 4.",
+          "acceptance": [
+            "Track attempts, successes, explicit rejections, timeouts and reconciled IDs.",
+            "run at twice the configured rate.",
+            "never label timeouts as rejections."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M04-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M04-03",
+          "title": "Deliver batching, key limits and OTLP compatibility",
+          "mode": "DELEGATE",
+          "competencies": [
+            "backpressure"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Make overload an observable sender outcome. This ticket addresses backpressure within milestone 4.",
+          "acceptance": [
+            "Accept JSON and binary Protobuf with gzip.",
+            "validate limits.",
+            "use per-key rate counters.",
+            "prove revocation and graceful shutdown."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M04-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M04-04",
+          "title": "Defend overload and retry behavior",
+          "mode": "PAIR",
+          "competencies": [
+            "reliability under load"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Make overload an observable sender outcome. This ticket addresses reliability under load within milestone 4.",
+          "acceptance": [
+            "Publish p50/p95/p99, accepted/rejected/uncertain totals, dataset and hardware.",
+            "identify the precise no-silent-loss evidence."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M04-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A single noisy key consumes the entire organization limit and starves another source. Design a fair limit boundary.",
+      "transfer": "Repeat overload with compressed bodies whose expansion exceeds the configured maximum.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 5,
+      "title": "Sentinel v1",
+      "objective": "Persist alert meaning across evaluations and restarts.",
+      "competencies": [
+        "state machines",
+        "exactly-once effects",
+        "cross-service contracts"
+      ],
+      "targetLevel": 4,
+      "lesson": "Pending measures sustained evidence, not one high sample. Persist state, episode identity and an outbox atomically. A lease reduces duplicate work; constraints and transaction semantics establish correctness. Database uniqueness cannot promise a recipient reads one notification.",
+      "tickets": [
+        {
+          "id": "M05-01",
+          "title": "Implement the threshold transition model without AI",
+          "mode": "SOLO",
+          "competencies": [
+            "state machines"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Persist alert meaning across evaluations and restarts. This ticket addresses state machines within milestone 5.",
+          "acceptance": [
+            "Cover for=0, flapping, missing samples and clock ordering.",
+            "define restart-gap policy.",
+            "use changed examples."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M05-02",
+          "title": "Test restart and concurrent page creation",
+          "mode": "SOLO",
+          "competencies": [
+            "exactly-once effects",
+            "cross-service contracts"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Persist alert meaning across evaluations and restarts. This ticket addresses exactly-once effects within milestone 5.",
+          "acceptance": [
+            "Crash between state change, page creation, outbox commit and delivery.",
+            "assert episode/step uniqueness and visible retries."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M05-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M05-03",
+          "title": "Deliver the .NET evaluator and one delivery channel",
+          "mode": "DELEGATE",
+          "competencies": [
+            "state machines",
+            "cross-service contracts"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Persist alert meaning across evaluations and restarts. This ticket addresses state machines within milestone 5.",
+          "acceptance": [
+            "Use ASP.NET Core, EF Core and hosted services.",
+            "persist evaluations.",
+            "justify leadership.",
+            "trace evaluation to notification."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M05-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M05-04",
+          "title": "Defend cross-service failure windows",
+          "mode": "PAIR",
+          "competencies": [
+            "exactly-once effects"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Persist alert meaning across evaluations and restarts. This ticket addresses exactly-once effects within milestone 5.",
+          "acceptance": [
+            "Explain ambiguous provider outcomes and idempotency.",
+            "run an exact-revision independent review.",
+            "rebut findings in writing."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M05-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "The provider accepted a page, then the worker died before marking delivery complete. Distinguish safe retry from a false exactly-once claim.",
+      "transfer": "Resume a checkpoint after leadership changed and show which effects can safely be repeated.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 6,
+      "title": "On-call and incidents",
+      "objective": "Resolve one responder and preserve the incident history.",
+      "competencies": [
+        "scheduling logic",
+        "notification reliability"
+      ],
+      "targetLevel": 4,
+      "lesson": "Decide whether rotation duration means elapsed time or local calendar boundaries. Store named time zones and explicit anchors. Overrides need a total precedence rule; ambiguous and nonexistent local times need a documented policy.",
+      "tickets": [
+        {
+          "id": "M06-01",
+          "title": "Implement deterministic on-call resolution",
+          "mode": "SOLO",
+          "competencies": [
+            "scheduling logic"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Resolve one responder and preserve the incident history. This ticket addresses scheduling logic within milestone 6.",
+          "acceptance": [
+            "Resolve negative offsets, exact handoffs, competing overrides and invalid empty rosters.",
+            "return one primary for each supported instant."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M06-02",
+          "title": "Property-test DST, overlaps and boundaries",
+          "mode": "SOLO",
+          "competencies": [
+            "notification reliability"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Resolve one responder and preserve the incident history. This ticket addresses notification reliability within milestone 6.",
+          "acceptance": [
+            "Generate instants around spring/fall transitions in multiple zones.",
+            "show instance-local timezone cannot change results."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M06-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M06-03",
+          "title": "Deliver acknowledgement, escalation and incident workflow",
+          "mode": "DELEGATE",
+          "competencies": [
+            "scheduling logic"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Resolve one responder and preserve the incident history. This ticket addresses scheduling logic within milestone 6.",
+          "acceptance": [
+            "Persist timeout escalation and idempotent acknowledgement.",
+            "audit schedule mutations.",
+            "manage timeline, postmortem and owned action items."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M06-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M06-04",
+          "title": "Run a delivery failure and incident defense",
+          "mode": "PAIR",
+          "competencies": [
+            "notification reliability"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Resolve one responder and preserve the incident history. This ticket addresses notification reliability within milestone 6.",
+          "acceptance": [
+            "Fail a notification channel.",
+            "observe retries and dead letters without falsely acknowledging.",
+            "complete an incident postmortem."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M06-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A responder is removed during an active escalation. Specify how existing pages and future resolution behave.",
+      "transfer": "Use a zone with a non-hour UTC offset and an override ending exactly at the handoff.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 7,
+      "title": "Performance",
+      "objective": "Find the bottleneck from measurements.",
+      "competencies": [
+        "throughput engineering",
+        "query planning"
+      ],
+      "targetLevel": 4,
+      "lesson": "Start with a reproducible workload and a budget. Distinguish generator saturation from server saturation. Record bytes, cardinality, concurrency, warmup and hardware. Reject optimization claims without before/after evidence and correctness reconciliation.",
+      "tickets": [
+        {
+          "id": "M07-01",
+          "title": "Diagnose the first throughput bottleneck",
+          "mode": "SOLO",
+          "competencies": [
+            "throughput engineering"
+          ],
+          "estimate": [
+            24,
+            48
+          ],
+          "context": "Find the bottleneck from measurements. This ticket addresses throughput engineering within milestone 7.",
+          "acceptance": [
+            "Measure CPU, I/O, locks, allocation and query plans without mentor hints.",
+            "predict the limiting resource and falsifier."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M07-02",
+          "title": "Design a reproducible mixed-workload benchmark",
+          "mode": "SOLO",
+          "competencies": [
+            "query planning"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Find the bottleneck from measurements. This ticket addresses query planning within milestone 7.",
+          "acceptance": [
+            "Specify 50k logs/s, 20k samples/s, 5k spans/s, 50 dashboards, 500 rules, seven-day raw data.",
+            "record payloads and disk/RAM."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M07-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M07-03",
+          "title": "Deliver the measured optimization",
+          "mode": "DELEGATE",
+          "competencies": [
+            "throughput engineering"
+          ],
+          "estimate": [
+            24,
+            48
+          ],
+          "context": "Find the bottleneck from measurements. This ticket addresses throughput engineering within milestone 7.",
+          "acceptance": [
+            "Meet or explicitly fail ingest <100ms p95, dashboard <2s p95, rules every 30s on the declared hardware.",
+            "reconcile data."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M07-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M07-04",
+          "title": "Defend performance and its limits",
+          "mode": "PAIR",
+          "competencies": [
+            "query planning"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Find the bottleneck from measurements. This ticket addresses query planning within milestone 7.",
+          "acceptance": [
+            "Publish raw artifacts and repeatability limits.",
+            "explain rejected optimizations and correctness risks.",
+            "never extrapolate a small test as a pass."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M07-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "Throughput doubles when the generator skips JSON decoding, but database counters do not change. Locate the benchmark mistake.",
+      "transfer": "Repeat with 100 times as many label combinations at the same event rate.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 8,
+      "title": "Reliability",
+      "objective": "Operate the correctness chain under failure.",
+      "competencies": [
+        "observability",
+        "operational design"
+      ],
+      "targetLevel": 4,
+      "lesson": "An SLO needs a numerator, denominator, window and user-visible meaning. Alert on evaluator lag and undelivered pages, not just process health. Runbooks must say how to establish safety before replaying effects.",
+      "tickets": [
+        {
+          "id": "M08-01",
+          "title": "Triage an unfamiliar production-shaped failure",
+          "mode": "SOLO",
+          "competencies": [
+            "observability"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Operate the correctness chain under failure. This ticket addresses observability within milestone 8.",
+          "acceptance": [
+            "Use logs, traces and metrics to distinguish leader loss, DB saturation and provider outage.",
+            "record timeline and confidence."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M08-02",
+          "title": "Define and instrument meaningful SLOs",
+          "mode": "SOLO",
+          "competencies": [
+            "operational design"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Operate the correctness chain under failure. This ticket addresses operational design within milestone 8.",
+          "acceptance": [
+            "Define ingest availability, evaluation latency and page delivery indicators.",
+            "distinguish rejected load and silent loss."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M08-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M08-03",
+          "title": "Deliver recovery jobs and operational dashboards",
+          "mode": "DELEGATE",
+          "competencies": [
+            "observability"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Operate the correctness chain under failure. This ticket addresses observability within milestone 8.",
+          "acceptance": [
+            "Implement retention with safe watermarks, dead-letter replay controls, backup/restore and feature flags.",
+            "instrument failures."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M08-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M08-04",
+          "title": "Run an incident drill and write the postmortem",
+          "mode": "PAIR",
+          "competencies": [
+            "operational design"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Operate the correctness chain under failure. This ticket addresses operational design within milestone 8.",
+          "acceptance": [
+            "Kill the evaluator mid-page.",
+            "recover without missing persisted work.",
+            "document impact, evidence, contributing factors and owned prevention."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M08-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A provider returns 200 for messages it never delivers. Identify what your current SLO can and cannot observe.",
+      "transfer": "Restore a backup into a fresh environment and reconcile alert state with previously sent pages.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 9,
+      "title": "Frontend depth",
+      "objective": "Make high-volume data usable and accessible.",
+      "competencies": [
+        "frontend performance",
+        "a11y"
+      ],
+      "targetLevel": 4,
+      "lesson": "Virtualization bounds rendered elements, but does not remove expensive transforms or broad React rerenders. Charts need textual summaries and keyboard-operable controls. Measure interaction frames on a declared device before choosing an optimization.",
+      "tickets": [
+        {
+          "id": "M09-01",
+          "title": "Diagnose a dashboard interaction freeze",
+          "mode": "SOLO",
+          "competencies": [
+            "frontend performance"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Make high-volume data usable and accessible. This ticket addresses frontend performance within milestone 9.",
+          "acceptance": [
+            "Profile eight panels with thousands of points.",
+            "separate network, transform, render and paint cost.",
+            "record a falsifiable hypothesis."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M09-02",
+          "title": "Build an accessible chart and log-viewer test",
+          "mode": "SOLO",
+          "competencies": [
+            "a11y"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Make high-volume data usable and accessible. This ticket addresses a11y within milestone 9.",
+          "acceptance": [
+            "Verify keyboard navigation, focus, text equivalents, contrast and empty/error states.",
+            "test stored-XSS payloads."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M09-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M09-03",
+          "title": "Deliver the dashboard editor and incident console",
+          "mode": "DELEGATE",
+          "competencies": [
+            "frontend performance"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Make high-volume data usable and accessible. This ticket addresses frontend performance within milestone 9.",
+          "acceptance": [
+            "Implement panel editing, persistence, virtualized logs and accessible incident actions.",
+            "keep interaction state predictable."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M09-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M09-04",
+          "title": "Defend frame budgets and interaction design",
+          "mode": "PAIR",
+          "competencies": [
+            "a11y"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Make high-volume data usable and accessible. This ticket addresses a11y within milestone 9.",
+          "acceptance": [
+            "Measure frame distribution in Playwright with a declared environment.",
+            "set justified CI budgets.",
+            "obtain user feedback."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M09-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A virtual list renders only 30 rows but still freezes because filtering recomputes on every pointer move. Demonstrate the cause.",
+      "transfer": "Use the complete primary workflow with keyboard and a screen reader, including errors.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 10,
+      "title": "Platform",
+      "objective": "Turn internal behavior into a durable public contract.",
+      "competencies": [
+        "API design",
+        "config-as-code"
+      ],
+      "targetLevel": 4,
+      "lesson": "Versioning is a promise about behavior, not a URL prefix. Config validation must happen before effects; a failed import should not leave half a dashboard. Webhooks need signatures, replay protection, bounded retries and explicit delivery history.",
+      "tickets": [
+        {
+          "id": "M10-01",
+          "title": "Design a compatible API change and deprecation",
+          "mode": "SOLO",
+          "competencies": [
+            "API design"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Turn internal behavior into a durable public contract. This ticket addresses API design within milestone 10.",
+          "acceptance": [
+            "Specify error shape, pagination, idempotency and scope.",
+            "introduce an unfamiliar optional field without breaking a pinned client."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M10-02",
+          "title": "Validate declarative config without partial writes",
+          "mode": "SOLO",
+          "competencies": [
+            "config-as-code"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Turn internal behavior into a durable public contract. This ticket addresses config-as-code within milestone 10.",
+          "acceptance": [
+            "Reject invalid references and duplicate names.",
+            "provide a dry-run diff.",
+            "apply atomically and test rollback."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M10-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M10-03",
+          "title": "Deliver versioned APIs, SDK and webhook delivery",
+          "mode": "DELEGATE",
+          "competencies": [
+            "API design"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Turn internal behavior into a durable public contract. This ticket addresses API design within milestone 10.",
+          "acceptance": [
+            "Publish reviewed alert/incident/on-call contracts, TypeScript SDK and signed webhooks with dead-letter handling."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M10-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M10-04",
+          "title": "Defend compatibility with a consumer test",
+          "mode": "PAIR",
+          "competencies": [
+            "config-as-code"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Turn internal behavior into a durable public contract. This ticket addresses config-as-code within milestone 10.",
+          "acceptance": [
+            "Run previous-version consumer fixtures.",
+            "document deprecation windows and rollback.",
+            "test replay and signing-key rotation."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M10-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A config importer creates two rules then fails parsing the third. Define a contract users can safely automate.",
+      "transfer": "Rotate a webhook secret while deliveries from the previous key are still retrying.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 11,
+      "title": "Hardening",
+      "objective": "Attack the exposed trust boundaries.",
+      "competencies": [
+        "security engineering",
+        "threat modeling"
+      ],
+      "targetLevel": 4,
+      "lesson": "Threat models connect an asset, adversary capability, entry point, failure and testable control. Dependency scanners cover known advisories, not tenant authorization or business-logic abuse. Security claims need adversarial verification.",
+      "tickets": [
+        {
+          "id": "M11-01",
+          "title": "Red-team query and ingest paths in a sandbox",
+          "mode": "SOLO",
+          "competencies": [
+            "security engineering"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Attack the exposed trust boundaries. This ticket addresses security engineering within milestone 11.",
+          "acceptance": [
+            "Attempt query injection, object-level auth bypass, key leakage, stored XSS and decompression abuse.",
+            "record false positives too."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M11-02",
+          "title": "Review supply chain and migration privileges",
+          "mode": "SOLO",
+          "competencies": [
+            "threat modeling"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Attack the exposed trust boundaries. This ticket addresses threat modeling within milestone 11.",
+          "acceptance": [
+            "Inspect lockfiles, CI permissions, images, secret handling and database roles.",
+            "test ordinary roles cannot bypass audit/RLS."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M11-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M11-03",
+          "title": "Deliver fixes with exploit regression evidence",
+          "mode": "DELEGATE",
+          "competencies": [
+            "security engineering"
+          ],
+          "estimate": [
+            16,
+            32
+          ],
+          "context": "Attack the exposed trust boundaries. This ticket addresses security engineering within milestone 11.",
+          "acceptance": [
+            "Fix verified findings without weakening behavior.",
+            "test compromised credentials and key revocation.",
+            "review status-page leakage."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M11-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M11-04",
+          "title": "Defend the threat model under changed assumptions",
+          "mode": "PAIR",
+          "competencies": [
+            "threat modeling"
+          ],
+          "estimate": [
+            8,
+            16
+          ],
+          "context": "Attack the exposed trust boundaries. This ticket addresses threat modeling within milestone 11.",
+          "acceptance": [
+            "Separate blockers from suggestions.",
+            "explain residual risks and attack costs.",
+            "obtain independent and human review."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M11-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "A valid write-scoped key is embedded in a public browser bundle. Assess the exposed capability and containment.",
+      "transfer": "Re-run tenant attacks while the connection pool is under concurrent load.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    },
+    {
+      "id": 12,
+      "title": "Handover",
+      "objective": "Demonstrate operation and transfer to another engineer.",
+      "competencies": [
+        "system design",
+        "operational ownership"
+      ],
+      "targetLevel": 4,
+      "lesson": "A handover is successful when another engineer can reproduce, deploy, diagnose and safely recover the system. A portfolio explains decisions and limitations with evidence. No milestone automatically grants a professional level.",
+      "tickets": [
+        {
+          "id": "M12-01",
+          "title": "Reconstruct a twelve-minute evaluator outage",
+          "mode": "SOLO",
+          "competencies": [
+            "system design"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Demonstrate operation and transfer to another engineer. This ticket addresses system design within milestone 12.",
+          "acceptance": [
+            "Determine which alerts should have fired and which did using stored evidence.",
+            "state what cannot be reconstructed."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M12-02",
+          "title": "Prepare a reproducible operational handover",
+          "mode": "SOLO",
+          "competencies": [
+            "operational ownership"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Demonstrate operation and transfer to another engineer. This ticket addresses operational ownership within milestone 12.",
+          "acceptance": [
+            "A fresh environment can build, migrate, seed synthetic data, run tests and recover a failed page without unsafe replay."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M12-01"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M12-03",
+          "title": "Deliver the final case study and evidence bundle",
+          "mode": "DELEGATE",
+          "competencies": [
+            "system design"
+          ],
+          "estimate": [
+            12,
+            24
+          ],
+          "context": "Demonstrate operation and transfer to another engineer. This ticket addresses system design within milestone 12.",
+          "acceptance": [
+            "Link writeups, ADRs, measured performance, real-user feedback, independent review and one outside contribution.",
+            "mark missing evidence."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M12-02"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        },
+        {
+          "id": "M12-04",
+          "title": "Defend the system cold with external reviewers",
+          "mode": "PAIR",
+          "competencies": [
+            "operational ownership"
+          ],
+          "estimate": [
+            6,
+            12
+          ],
+          "context": "Demonstrate operation and transfer to another engineer. This ticket addresses operational ownership within milestone 12.",
+          "acceptance": [
+            "Perform unfamiliar requirement change, incorrect-finding rebuttal and incident defense.",
+            "obtain reasoned human readiness feedback."
+          ],
+          "outOfScope": "Unrelated services, unmeasured optimizations, production customer data and live notification sends.",
+          "done": [
+            "Acceptance criteria have linked observed evidence.",
+            "Author records plan, falsifiable prediction, verification and PR description.",
+            "Explain-back and independent exact-revision review are recorded separately from delivery.",
+            "Open failures are resolved or explicitly block acceptance; no success-shaped stubs."
+          ],
+          "dependencies": [
+            "M12-03"
+          ],
+          "delivery_status": "not_started",
+          "learning_status": "unassessed"
+        }
+      ],
+      "drill": "An unfamiliar maintainer follows the runbook and sends a page twice. Determine whether the failure is implementation, documentation or both.",
+      "transfer": "Have a human reviewer select a new failure without revealing the expected diagnosis.",
+      "delivery_status": "not_started",
+      "learning_status": "unassessed"
+    }
+  ]
+}

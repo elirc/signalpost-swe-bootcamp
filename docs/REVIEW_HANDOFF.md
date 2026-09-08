@@ -1,11 +1,11 @@
-# Independent review handoff
+# Review handoff — learner-first curriculum
 
-Reviewer: a separate Claude Code session using Appendix A from docs/curriculum/ORIGINAL_PROGRAM.md. No independent review has occurred in this run.
+Review the latest exact commit on `build/signalpost-foundation`; record `git rev-parse HEAD` and a clean/dirty status before assessing it. This is a local review branch, not a merged or published change. No independent review has been performed.
 
-Start with AGENTS.md, STATE.md, SKILLS.md, THREAT_MODEL.md and the final run checkpoint. Record the exact revision using `git rev-parse HEAD`; include dirty-file status. Review only that revision. Check behavior, tests and their limits; do not grade an imagined future implementation.
+Focus: does the active path teach an uncalibrated novice before assessing independent work? Are tasks concrete, prerequisites coherent, assistance honestly attributed and senior responsibilities distinguished from course completion? Verify the first-session instructions against the supplied starter and checks. Check that new U identifiers do not reinterpret old journal evidence.
 
-Findings require failure scenario, file/line/test evidence, severity, confidence and affected acceptance criterion/invariant. Separate blockers from suggestions. Zero blockers is a valid outcome. Review the PR description as a communication artifact. The learner resolves or rebuts each finding in writing.
+Sources: scripts/write-curriculum.py, docs/curriculum/U01–U12 and support guides, practice, portal component, curriculum validator and browser tests. Original M guides have historical banners; archive/program-v1.json preserves old IDs. Prepared backend source and migrations are unchanged.
 
-Priorities: durable acknowledgement and uncertain commits; admission capacity; scope and RLS under pooled connections; private aggregate source permissions; episode/page uniqueness; lease expiry during evaluation; outbox ambiguous sends; DST and override boundaries; migration recovery; UI secret handling and stored-XSS safety.
+Run curriculum:check, typecheck, production build and browser checks. U01/U03 placeholders and the deliberately defective U02 initially fail their separate learner checks; those failures must not be “fixed” by supplying assessed implementations. The SQL console is disposable and in memory. See run 0002 for observed outcomes.
 
-Known incomplete scope is in OPEN_THREADS.md. Do not mistake declared omissions for implemented features. Exact-revision review, human review and learner explain-back gates remain pending even if local tests pass.
+For actual learner assessment, review the learner's own revision and apply ASSESSMENT.md. Give evidence, consequence, smallest remedy and changed test. Do not award skills for this preparation commit or impersonate an independent/human reviewer.

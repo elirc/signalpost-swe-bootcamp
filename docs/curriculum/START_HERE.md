@@ -1,39 +1,44 @@
-# Start here
+# Start here — learn to do the work yourself
 
-Open the local portal with `npm run dev`, or read [M00](M00.md). This is a complete curriculum and assessment process, with a growing implementation used as study material. It is not a completed personal bootcamp or a certified production platform.
+The active objective is your development from novice/junior skills toward independent engineering and senior responsibilities. Start with [your first 75 minutes](FIRST_SESSION.md), then [U01](U01.md). The portal is at http://127.0.0.1:3427 when the local preview is running. On Windows, `npm.cmd run dev` starts the development portal on port 3000.
 
-## The two-week pilot
+Your current ability is unknown. Starting with fundamentals is a safe default, not a judgment of your ability. If familiar material is easy, use the [challenge-out procedure](ASSESSMENT.md) with evidence instead of completing repetitive tutorials.
 
-Use 15 hours/week as a provisional capacity. In week one, spend 7 hours on independent calibration/diagnosis, 3.5 on investigation and review, and 4.5 on drills. In week two, spend 10.5 hours on the first bounded M1 work selected from actual calibration evidence and 4.5 on drills. Unfinished tickets carry forward. Do not advance because a calendar week ended.
+## The path
 
-At each work session: select a ticket and mode; write a 5–10-line plan; predict an outcome/confidence/falsifier; perform the work; record commands and observed results; explain the change with the diff closed. Export browser evidence for backup and review. No automatic skill scoring.
+| Stage | Modules | What you learn to demonstrate |
+| --- | --- | --- |
+| Foundations | [U01](U01.md)–[U06](U06.md) | Write and debug code; use types/tests; build an API, relational data model and usable interface |
+| Independent delivery | [U07](U07.md)–[U09](U09.md) | Own a complete feature; enforce permissions; maintain unfamiliar code; collaborate and measure performance |
+| Senior practice | [U10](U10.md)–[U12](U12.md) | Handle partial failure; make conditional design decisions; operate, mentor and sustain ownership |
 
-## Four modes
+Use JavaScript first, then TypeScript, React and SQL. Do not learn C#, Timescale, Redis or a distributed observability stack before this foundation. The old M00–M12 guides and original program are preserved as optional advanced reference. Their production targets are not your graduation requirements.
 
-- SOLO: no AI assistance during work; ordinary documentation and terminal allowed. Self-report honestly.
-- PAIR: learner types every line; mentor asks pointed questions and does not write implementation.
-- DELEGATE: learner scopes and predicts; agent records a run contract, implements, self-reviews and verifies; learner reviews every line.
-- SPIKE: timeboxed throwaway exploration, with findings and consequences in an ADR.
+## Two-week pilot
 
-After 45 minutes without progress, write attempts and the precise unresolved issue, then log one mode escalation. A stuck session is evidence; concealment is not progress.
+Assume 15 focused hours/week until actual experience suggests otherwise. No deadline and no catch-up debt. At 5 or 10 hours, keep the same sequence and carry work forward. The estimates are planning ranges, not a promise of time to a job title.
 
-## Repeatable ticket loop
+Week one: 3 hours on setup, instruction and guided U01; 5 hours on independent U01 attempts; 2 hours on feedback/corrections; 1 hour revisiting earlier work; 4 hours buffer, rest or continuation. Do not fill the buffer with new frameworks.
 
-1. Read the ticket's context, acceptance criteria, scope and target competencies.
-2. Plan before implementation. Grade specificity, risk recognition, testability and scope.
-3. Record prediction before observing the implementation or experiment.
-4. Implement in the declared mode. Verify acceptance and protected invariants.
-5. Write the PR description: problem, approach, alternatives, risks and observed verification.
-6. Close the diff. Explain the change, defend an alternative, analyze a failure/concurrency case and identify where it breaks first.
-7. Hand the exact revision to the independent reviewer; resolve or rebut each finding with evidence.
-8. Retro and update the skill ledger only using observed transfer evidence.
+Week two: 1 hour on U01 changed-example checks; 3 hours learning/guided debugging in U02; 5 hours independent work; 2 hours feedback/revisit; 4 hours buffer. Advance only when prerequisites are evidenced. If U01 is unfinished, week two stays on U01. If it is already mastered, challenge out and start the next demonstrated gap.
 
-## Evidence and feedback
+## A repeatable session
 
-On a misunderstanding, preserve correct software and complete the smallest exercise that exposes the gap. Retest with a changed example. Two misses allow the mentor to give the explanation; then test transfer again. Plausible fluency is not independent competence.
+1. Name one small behavior you want to implement or understand.
+2. Read the relevant lesson and type its different-domain worked example if this is new.
+3. Predict one result; practice, inspect output and correct one misunderstanding.
+4. Complete the independent task with AI chat/completion disabled, normal documentation allowed.
+5. Close the solution and explain the inputs, decisions, failure cases and verification.
+6. Keep a three-line record: intention; observation/artifact; assistance/next gap. Revisit a changed example after 2–7 days and around three weeks.
 
-Use [assessment rubrics](ASSESSMENT.md), [drills](DRILLS.md), [agent exercises](AGENT_ENGINEERING.md) and [review handoff](../REVIEW_HANDOFF.md). The learner's answers, reviews and operating experience cannot be performed on their behalf.
+A 75-minute example is 10 minutes of recall, 15 instruction, 35 focused practice, 10 explain-back/correction and 5 records. Some sessions are mostly instruction or independent work. Do not force a fixed work/drill ratio on every session. Module task estimates retain at least 30% independent practice; current authored allocation exceeds that floor.
 
-## Advancement
+## Assistance and feedback
 
-All ticket delivery criteria must pass and the milestone's declared target competencies must reach their stated provisional target before advancement is credited. Include the demo, writeup, independent review and applicable human feedback. Re-estimate at every milestone. No milestone confers a job level.
+PAIR means guided learning: you type the code while a tutor explains or hints. Static lessons can provide the guidance when no tutor is available. SOLO means no AI during the attempt; it still permits ordinary documentation, tests and debugging tools. A revealed solution changes that attempt to guided work; it does not ruin the program. Follow with a fresh independent variation.
+
+In foundations, reduce a task after 10–20 minutes of unproductive guessing; see the hint ladder in FIRST_SESSION. Later investigations can use a 30–45 minute timebox before escalation. Log help honestly. Delegate implementation only after you can review it; [agent practice](AGENT_ENGINEERING.md) begins in U08.
+
+Use [MENTOR](MENTOR.md) for feedback, [ASSESSMENT](ASSESSMENT.md) for gates, [PROJECTS](PROJECTS.md) for project setup and [PORTFOLIO](PORTFOLIO.md) for evidence. A small exercise needs quick feedback, not an external review ceremony. Seek actual human review at portfolio gates; its absence leaves collaboration/readiness claims pending, without blocking ordinary practice.
+
+Preparing this course has not completed your learning. All personal skills remain unassessed until your work, explanations and changed-example attempts provide evidence.

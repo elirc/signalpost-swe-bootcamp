@@ -1194,3 +1194,44 @@ textarea {
     transition: none !important;
   }
 }
+.worked-code {
+  margin: 1rem 0;
+  padding: 1.15rem;
+  background: #eef2e9;
+  color: #243b2d;
+  border: 1px solid #cbd6c5;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.guided-list {
+  padding-left: 1.5rem;
+  line-height: 1.8;
+}
+.guided-list li + li {
+  margin-top: 0.6rem;
+}
+.guided-list code,
+.spaced code {
+  overflow-wrap: anywhere;
+}
+.lesson a {
+  color: #27573b;
+  text-underline-offset: 3px;
+}
+.journal-details {
+  margin: 1rem 0;
+}
+.journal-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.75rem 0;
+}
+.journal-details[open] {
+  display: block;
+}
+.journal-details label {
+  margin-top: 1rem;
+}
