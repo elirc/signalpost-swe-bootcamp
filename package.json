@@ -1,0 +1,56 @@
+{
+  "name": "signalpost",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env node_modules/next/dist/bin/next dev apps/web --hostname 127.0.0.1",
+    "build": "next build apps/web",
+    "start": "node --env-file-if-exists=.env node_modules/next/dist/bin/next start apps/web --hostname 127.0.0.1",
+    "ingest": "tsx --env-file-if-exists=.env services/ingest/main.ts",
+    "migrate": "tsx --env-file-if-exists=.env scripts/migrate.ts",
+    "bootstrap": "tsx --env-file-if-exists=.env scripts/bootstrap.ts",
+    "demo": "tsx --env-file-if-exists=.env scripts/demo.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:containers": "vitest run --config vitest.containers.config.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run curriculum:check && npm run build",
+    "curriculum:check": "tsx scripts/check-curriculum.ts",
+    "load": "tsx --env-file-if-exists=.env scripts/load.ts"
+  },
+  "dependencies": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "fastify": "5.12.3",
+    "pg": "8.23.0",
+    "zod": "4.5.4",
+    "ioredis": "6.0.0",
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/sdk-node": "0.222.0",
+    "@opentelemetry/auto-instrumentations-node": "0.80.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.222.0",
+    "@tanstack/react-virtual": "3.14.11",
+    "uplot": "1.6.32"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "tsx": "4.23.13",
+    "vitest": "5.0.0",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@types/pg": "8.23.1",
+    "@electric-sql/pglite": "0.5.8",
+    "@playwright/test": "1.63.0",
+    "@axe-core/playwright": "4.13.0",
+    "@testcontainers/postgresql": "12.1.0",
+    "fast-check": "4.9.0",
+    "prettier": "3.9.6"
+  }
+}

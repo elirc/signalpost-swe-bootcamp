@@ -1,0 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Signalpost.Sentinel;
+using StackExchange.Redis;
+var builder = WebApplication.CreateBuilder(args);
+var database = builder.Configuration["SENTINEL_DATABASE_URL"] ?? throw new InvalidOperationException("SENTINEL_DATABASE_URL is required (Npgsql connection string)");
+var redis = builder.Configuration["REDIS_CONNECTION"] ?? throw new InvalidOperationException("REDIS_CONNECTION is required");
+builder.Services.AddPooledDbContextFactory<SentinelDb>(o => o.UseNpgsql(database, n => n.CommandTimeout(10)));
+builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(redis));
+builder.Services.AddHttpClient("notifications", c => c.Timeout = TimeSpan.FromSeconds(5)).ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler { AllowAutoRedirect = false });
+builder.Services.AddOpenTelemetry().ConfigureResource(r => r.AddService("signalpost-sentinel")).WithTracing(t => { t.AddSource("Signalpost.Sentinel").AddAspNetCoreInstrumentation().AddHttpClientInstrumentation(); if (!string.IsNullOrEmpty(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"])) t.AddOtlpExporter(); });
+builder.Services.AddHostedService<Evaluator>();
+builder.Services.AddHostedService<Delivery>();
+var app = builder.Build();
+app.MapGet("/health", () => Results.Ok(new { status = "process-running", readiness = "Inspect evaluator lag and pending outbox; this endpoint is liveness only" }));
+app.Run();

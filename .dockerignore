@@ -1,0 +1,11 @@
+.git
+node_modules
+apps/web/.next
+.env
+.env.*
+.tools
+artifacts
+**/bin
+**/obj
+test-results
+playwright-report
