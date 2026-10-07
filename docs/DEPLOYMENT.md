@@ -9,3 +9,16 @@ For a future data deployment, use separate service networks and restricted inges
 Production gates: complete M3 identity review; full OTLP contract decision; migration upgrade and restore evidence; crash/lease/outbox test; real notification provider security and idempotency; per-tenant storage quota; measured benchmark and SLOs; runbooks and operational drill; exact-revision independent review. Record the image digest, migrations and rollback/recovery procedure before release.
 
 No automated workflow here deploys or publishes. GitHub CI configuration becomes evidence only after it runs on the chosen repository/revision.
+
+## What the repository actually builds
+
+- The root `Dockerfile` is a two-stage `node:24-bookworm-slim` build that runs `npm ci` and `npm run build`,
+  then starts **only** the Next server as the non-root `node` user on port 3000. It does not include the ingest
+  service or Sentinel; those have their own entry points (`npm run ingest`, `services/sentinel/Dockerfile`).
+- `compose.yaml` provides local infrastructure only — `timescale/timescaledb:2.22.1-pg17` and
+  `redis:7.4-alpine` — with ports published on `127.0.0.1` only.
+- Role passwords in `db/roles.sql` are explicitly local-development values; they must be replaced through
+  secret injection before any shared environment.
+
+**Check:** before a demo deploy, confirm the image you build exposes only port 3000 and that the environment
+has no `QUERY_DATABASE_URL`.
